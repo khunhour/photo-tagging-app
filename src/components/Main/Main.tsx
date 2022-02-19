@@ -1,24 +1,24 @@
 import React from "react";
+import DropDown from "../DropDown";
+//css
 import "./Main.css";
+//components
 
 interface Props {
 	showTarget: boolean;
+	mouseCoord: { x: number; y: number };
 	handleClickedPic: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const dropDown = (
-	<div className="drop-down">
-		<button>1</button>
-		<button>2</button>
-		<button>3</button>
-	</div>
-);
-
-const Main: React.FC<Props> = ({ showTarget, handleClickedPic }) => {
+const Main: React.FC<Props> = ({
+	showTarget,
+	mouseCoord,
+	handleClickedPic,
+}) => {
 	return (
 		<div className="img-container" onClick={handleClickedPic}>
 			<img src="/images/cartoonnetwork.jpg" alt="pic" />
-			{showTarget ? dropDown : null}
+			{showTarget ? <DropDown mouseCoord={mouseCoord} /> : null}
 		</div>
 	);
 };

@@ -8,14 +8,23 @@ import Main from "./components/Main/Main";
 
 function App() {
 	const [showTarget, setShowTarget] = useState(false);
-	const [mouseCoord, setMouseCoord] = useState([0, 0]);
-	const handleClickedPic = (e: React.MouseEvent<HTMLDivElement>) => {
+	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
+
+	const handleClickedPic = (e: React.MouseEvent) => {
 		setShowTarget(!showTarget);
+		setMouseCoord({
+			x: e.pageX,
+			y: e.pageY,
+		});
 	};
 	return (
 		<div className="App">
 			<Header />
-			<Main showTarget={showTarget} handleClickedPic={handleClickedPic} />
+			<Main
+				showTarget={showTarget}
+				mouseCoord={mouseCoord}
+				handleClickedPic={handleClickedPic}
+			/>
 			<Footer />
 		</div>
 	);
