@@ -2,9 +2,13 @@ import React from "react";
 
 interface Props {
 	mouseCoord: { x: number; y: number };
+	remainingTarget: {
+		name: string;
+		img: string;
+	}[];
 }
 
-const DropDown: React.FC<Props> = ({ mouseCoord }) => {
+const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
 	return (
 		<>
 			<div
@@ -15,9 +19,14 @@ const DropDown: React.FC<Props> = ({ mouseCoord }) => {
 				className="drop-down"
 				style={{ top: mouseCoord.y + 20, left: mouseCoord.x + 20 }}
 			>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
+				{remainingTarget.map((target, index) => {
+					return (
+						<button key={index}>
+							<img src={target.img} alt="character" />
+							<div> {target.name}</div>
+						</button>
+					);
+				})}
 			</div>
 		</>
 	);
