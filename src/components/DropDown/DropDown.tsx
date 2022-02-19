@@ -1,4 +1,5 @@
 import React from "react";
+import "./DropDown.css";
 
 interface Props {
 	mouseCoord: { x: number; y: number };
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
+	console.log(remainingTarget);
 	return (
 		<>
 			<div
@@ -22,7 +24,12 @@ const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
 				{remainingTarget.map((target, index) => {
 					return (
 						<button key={index}>
-							<img src={target.img} alt="character" />
+							<div className="img-container">
+								<img
+									src={require(target.img)}
+									alt="character"
+								/>
+							</div>
 							<div> {target.name}</div>
 						</button>
 					);

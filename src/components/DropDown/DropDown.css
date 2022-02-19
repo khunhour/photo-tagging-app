@@ -1,0 +1,31 @@
+.drop-down {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: white;
+}
+
+.drop-down button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.drop-down button .img-container {
+	width: 20px;
+	height: 20px;
+}
+
+.img-container img {
+}
+
+.target-circle {
+	position: absolute;
+	padding: 26px;
+
+	border-radius: 50%;
+	border: solid 4px red;
+	box-sizing: border-box;
+}

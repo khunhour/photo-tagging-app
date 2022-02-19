@@ -1,5 +1,5 @@
 import React from "react";
-import DropDown from "../DropDown";
+import DropDown from "../DropDown/DropDown";
 //css
 import "./Main.css";
 //image import
@@ -25,7 +25,7 @@ const Main: React.FC<Props> = ({
 	return (
 		<div className="img-container" onClick={handleClickedPic}>
 			<img
-				src="../../../images/cartoonnetwork.jpg"
+				src={require("../../images/cartoonnetwork.jpg")}
 				alt="wheres-waldo-pic"
 			/>
 			{showTarget ? (
