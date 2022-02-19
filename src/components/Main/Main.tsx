@@ -2,7 +2,10 @@ import React from "react";
 import DropDown from "../DropDown";
 //css
 import "./Main.css";
-//components
+//image import
+// import bgPhoto from "/images/cartoonnetwork.jpg";
+
+//types
 interface Props {
 	showTarget: boolean;
 	mouseCoord: { x: number; y: number };
@@ -21,7 +24,10 @@ const Main: React.FC<Props> = ({
 }) => {
 	return (
 		<div className="img-container" onClick={handleClickedPic}>
-			<img src="../../images/cartoonnetwork.jpg" alt="wheres-waldo-pic" />
+			<img
+				src="../../../images/cartoonnetwork.jpg"
+				alt="wheres-waldo-pic"
+			/>
 			{showTarget ? (
 				<DropDown
 					mouseCoord={mouseCoord}
