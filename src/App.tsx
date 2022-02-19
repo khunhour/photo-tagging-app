@@ -9,15 +9,15 @@ import Main from "./components/Main/Main";
 const TARGET_CHARACTER: { name: string; img: string }[] = [
 	{
 		name: "Benson",
-		img: "src/images/benson.png",
+		img: "benson.png",
 	},
 	{
 		name: "Courage",
-		img: "src/images/courage.png",
+		img: "courage.png",
 	},
 	{
 		name: "Lazlo",
-		img: "src/images/lazlo.png",
+		img: "lazlo.png",
 	},
 ];
 

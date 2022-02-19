@@ -26,7 +26,7 @@ const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
 						<button key={index}>
 							<div className="img-container">
 								<img
-									src={require(target.img)}
+									src={require("/src/images/" + target.img)}
 									alt="character"
 								/>
 							</div>
