@@ -37,7 +37,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
+			<Header remainingTargetNum={remainingTarget.length} />
 			<Main
 				showTarget={showTarget}
 				mouseCoord={mouseCoord}
