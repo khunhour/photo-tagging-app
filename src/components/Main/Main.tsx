@@ -5,7 +5,7 @@ import "./Main.css";
 
 //types
 interface Props {
-	showTarget: boolean;
+	showMarker: boolean;
 	mouseCoord: { x: number; y: number };
 	remainingTarget: {
 		name: string;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Main: React.FC<Props> = ({
-	showTarget,
+	showMarker,
 	mouseCoord,
 	remainingTarget,
 	handleClickedPic,
@@ -26,7 +26,7 @@ const Main: React.FC<Props> = ({
 				src={require("../../images/cartoonnetwork.jpg")}
 				alt="wheres-waldo-pic"
 			/>
-			{showTarget ? (
+			{showMarker ? (
 				<DropDown
 					mouseCoord={mouseCoord}
 					remainingTarget={remainingTarget}

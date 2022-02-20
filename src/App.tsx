@@ -17,7 +17,7 @@ import { handleClickedPicType } from "./type/handleClickedPicType";
 import { TargetLocation } from "./type/targetLocation";
 
 const App: React.FC = () => {
-	const [showTarget, setShowTarget] = useState(false);
+	const [showMarker, setShowMarker] = useState(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 	const [targetLocation, setTargetLocation] = useState({});
@@ -38,7 +38,7 @@ const App: React.FC = () => {
 
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: handleClickedPicType) => {
-		setShowTarget(!showTarget);
+		setShowMarker(!showMarker);
 		setMouseCoord({
 			x: e.pageX,
 			y: e.pageY,
@@ -53,7 +53,7 @@ const App: React.FC = () => {
 		<div className="App">
 			<Header remainingTargetNum={remainingTarget.length} />
 			<Main
-				showTarget={showTarget}
+				showMarker={showMarker}
 				mouseCoord={mouseCoord}
 				remainingTarget={remainingTarget}
 				handleClickedPic={handleClickedPic}
