@@ -22,7 +22,7 @@ const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
 			>
 				{remainingTarget.map((target, index) => {
 					return (
-						<button key={index}>
+						<button key={index} id={target.name.toLowerCase()}>
 							<div className="img-container">
 								<img
 									src={require("/src/images/" + target.img)}

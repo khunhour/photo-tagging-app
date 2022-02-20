@@ -43,11 +43,9 @@ const App: React.FC = () => {
 			x: e.pageX,
 			y: e.pageY,
 		});
-		console.log(findCoord(e));
-		console.log(e);
-		console.log("x: ", e.pageX);
-		console.log("y: ", e.pageY);
 	};
+
+	const handleCharSelection = () => {};
 
 	return (
 		<div className="App">
