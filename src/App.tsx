@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 //fire base
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase-config";
 
 // helper functions import
 import { findCoord } from "./utilities/findCoord";
@@ -12,16 +14,26 @@ import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
 
 // type import
 import { handleClickedPicType } from "./type/handleClickedPicType";
+import { TargetLocation } from "./type/targetLocation";
 
 const App: React.FC = () => {
 	const [showTarget, setShowTarget] = useState(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
+	const [targetLocation, setTargetLocation] = useState({});
+	const locationCollectionRef = collection(db, "target-location");
 
+	//fetch actual answers to target location
 	useEffect(() => {
-		return () => {
-			second;
+		const getLocation = async () => {
+			const data = await getDocs(locationCollectionRef);
+			const formattedData = data.docs.map((doc) => ({
+				...doc.data(),
+			}))[0];
+			setTargetLocation(formattedData);
 		};
+
+		getLocation();
 	}, []);
 
 	//handle when click on pic to show targetcircle and dropdown for selection
