@@ -1,6 +1,6 @@
 import { handleClickedPicType } from "../type/handleClickedPicType";
 
-export const findCoord = (e: handleClickedPicType) => {
+export const findPercentageCoord = (e: handleClickedPicType) => {
 	//x percentage relative to img-container
 	let x =
 		Math.floor(

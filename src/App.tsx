@@ -9,18 +9,18 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase-config";
 
 // helper functions import
-import { findCoord } from "./utilities/findCoord";
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
 
 // type import
 import { handleClickedPicType } from "./type/handleClickedPicType";
 import { TargetLocation } from "./type/targetLocation";
+import { checkCharMatch } from "./utilities/checkCharMatch";
 
 const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
-	const [targetLocation, setTargetLocation] = useState({});
+	const [targetLocation, setTargetLocation] = useState<TargetLocation>();
 	const locationCollectionRef = collection(db, "target-location");
 
 	//fetch actual answers to target location
@@ -45,7 +45,13 @@ const App: React.FC = () => {
 		});
 	};
 
-	const handleCharSelection = () => {};
+	const handleCharSelection = (e: handleClickedPicType) => {
+		//check if it match with provided char
+		// if true
+		//adjust remaining char
+		//display result
+		checkCharMatch(e, targetLocation);
+	};
 
 	return (
 		<div className="App">
@@ -55,6 +61,7 @@ const App: React.FC = () => {
 				mouseCoord={mouseCoord}
 				remainingTarget={remainingTarget}
 				handleClickedPic={handleClickedPic}
+				handleCharSelection={handleCharSelection}
 			/>
 			<Footer />
 		</div>

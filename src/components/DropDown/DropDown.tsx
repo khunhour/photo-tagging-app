@@ -1,4 +1,5 @@
 import React from "react";
+import { handleClickedPicType } from "../../type/handleClickedPicType";
 import "./DropDown.css";
 
 interface Props {
@@ -7,9 +8,14 @@ interface Props {
 		name: string;
 		img: string;
 	}[];
+	handleCharSelection: (e: handleClickedPicType) => void;
 }
 
-const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
+const DropDown: React.FC<Props> = ({
+	mouseCoord,
+	remainingTarget,
+	handleCharSelection,
+}) => {
 	return (
 		<>
 			<div
@@ -22,7 +28,11 @@ const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
 			>
 				{remainingTarget.map((target, index) => {
 					return (
-						<button key={index} id={target.name.toLowerCase()}>
+						<button
+							key={index}
+							id={target.name.toLowerCase()}
+							onClick={handleCharSelection}
+						>
 							<div className="img-container">
 								<img
 									src={require("/src/images/" + target.img)}

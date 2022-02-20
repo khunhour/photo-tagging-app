@@ -9,7 +9,5 @@ type Coord = {
 };
 
 export type TargetLocation = {
-	benson: Coord;
-	courage: Coord;
-	lazlo: Coord;
+	[x: string]: any;
 };
