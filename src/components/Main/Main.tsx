@@ -1,5 +1,4 @@
-import React, { MouseEvent, useRef } from "react";
-import { handleClickedPicType } from "../../type/handleClickedPicType";
+import React from "react";
 import DropDown from "../DropDown/DropDown";
 //css
 import "./Main.css";
@@ -21,10 +20,8 @@ const Main: React.FC<Props> = ({
 	remainingTarget,
 	handleClickedPic,
 }) => {
-	const divRef: React.MutableRefObject<null> = useRef(null);
-
 	return (
-		<div className="img-container" onClick={handleClickedPic} ref={divRef}>
+		<div className="img-container" onClick={handleClickedPic}>
 			<img
 				src={require("../../images/cartoonnetwork.jpg")}
 				alt="wheres-waldo-pic"
