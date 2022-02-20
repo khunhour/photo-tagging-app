@@ -1,9 +1,8 @@
-import React from "react";
+import React, { MouseEvent, useRef } from "react";
+import { handleClickedPicType } from "../../type/handleClickedPicType";
 import DropDown from "../DropDown/DropDown";
 //css
 import "./Main.css";
-//image import
-// import bgPhoto from "/images/cartoonnetwork.jpg";
 
 //types
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
 		name: string;
 		img: string;
 	}[];
-	handleClickedPic: React.MouseEventHandler<HTMLDivElement>;
+	handleClickedPic: (e: any) => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -22,8 +21,10 @@ const Main: React.FC<Props> = ({
 	remainingTarget,
 	handleClickedPic,
 }) => {
+	const divRef: React.MutableRefObject<null> = useRef(null);
+
 	return (
-		<div className="img-container" onClick={handleClickedPic}>
+		<div className="img-container" onClick={handleClickedPic} ref={divRef}>
 			<img
 				src={require("../../images/cartoonnetwork.jpg")}
 				alt="wheres-waldo-pic"

@@ -10,11 +10,10 @@ interface Props {
 }
 
 const DropDown: React.FC<Props> = ({ mouseCoord, remainingTarget }) => {
-	console.log(remainingTarget);
 	return (
 		<>
 			<div
-				className="target-circle"
+				className="marker"
 				style={{ top: mouseCoord.y - 30, left: mouseCoord.x - 30 }}
 			></div>
 			<div

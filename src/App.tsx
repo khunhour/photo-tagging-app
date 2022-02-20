@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+import { findCoord } from "./utilities/findCoord";
 // helper functions
 // import { handleClickedPic } from "./utilities/handleClickedPic";
+// type import
+import { handleClickedPicType } from "./type/handleClickedPicType";
 
 const TARGET_CHARACTER: { name: string; img: string }[] = [
 	{
@@ -21,18 +24,22 @@ const TARGET_CHARACTER: { name: string; img: string }[] = [
 	},
 ];
 
-function App() {
+const App: React.FC = () => {
 	const [showTarget, setShowTarget] = useState(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 
 	//handle when click on pic to show targetcircle and dropdown for selection
-	const handleClickedPic = (e: React.MouseEvent) => {
+	const handleClickedPic = (e: handleClickedPicType) => {
 		setShowTarget(!showTarget);
 		setMouseCoord({
 			x: e.pageX,
 			y: e.pageY,
 		});
+		console.log(findCoord(e));
+		console.log(e);
+		console.log("x: ", e.pageX);
+		console.log("y: ", e.pageY);
 	};
 
 	return (
@@ -47,6 +54,6 @@ function App() {
 			<Footer />
 		</div>
 	);
-}
+};
 
 export default App;
