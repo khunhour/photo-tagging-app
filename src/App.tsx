@@ -1,33 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // components
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+
+//fire base
+
+// helper functions import
 import { findCoord } from "./utilities/findCoord";
-// helper functions
-// import { handleClickedPic } from "./utilities/handleClickedPic";
+import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
+
 // type import
 import { handleClickedPicType } from "./type/handleClickedPicType";
-
-const TARGET_CHARACTER: { name: string; img: string }[] = [
-	{
-		name: "Benson",
-		img: "benson.png",
-	},
-	{
-		name: "Courage",
-		img: "courage.png",
-	},
-	{
-		name: "Lazlo",
-		img: "lazlo.png",
-	},
-];
 
 const App: React.FC = () => {
 	const [showTarget, setShowTarget] = useState(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
+
+	useEffect(() => {
+		return () => {
+			second;
+		};
+	}, []);
 
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: handleClickedPicType) => {
