@@ -29,7 +29,9 @@ const DropDown: React.FC<Props> = ({
 						<button
 							key={index}
 							id={target.name.toLowerCase()}
-							onClick={handleCharSelection}
+							onClick={() =>
+								handleCharSelection(target.name.toLowerCase())
+							}
 						>
 							<div className="img-container">
 								<img

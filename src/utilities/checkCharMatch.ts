@@ -5,28 +5,21 @@ import { checkInRange } from "./checkInRange";
 import { findPercentageCoord } from "./findPercentageCoord";
 
 export const checkCharMatch = (
+	id: string,
 	mouseCoord: MouseCoord,
 	targetLocation: TargetLocation
 ) => {
 	let charMatched = "";
 	const { x, y } = mouseCoord;
-	console.log(x);
-	console.log(y);
-	for (let i = 0; i < targetLocation.length; i++) {
-		let xInRange = checkInRange(
-			targetLocation[i].xStart,
-			targetLocation[i].xEnd,
-			x
-		);
-		let yInRange = checkInRange(
-			targetLocation[i].yStart,
-			targetLocation[i].yEnd,
-			y
-		);
-		if (yInRange && xInRange) {
-			charMatched = targetLocation[i].name;
-			break;
-		}
-	}
+	targetLocation.forEach((obj) => {
+		if (obj.name === id) {
+			let xInRange = checkInRange(obj.xStart, obj.xEnd, x);
+			let yInRange = checkInRange(obj.yStart, obj.yEnd, y);
+			if (yInRange && xInRange) {
+				charMatched = obj.name;
+			}
+		} else return;
+	});
+
 	return charMatched;
 };

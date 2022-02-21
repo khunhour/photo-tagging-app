@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 // components
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -44,10 +44,10 @@ const App: React.FC = () => {
 		setMouseCoord(coord);
 	};
 
-	const handleCharSelection = () => {
+	const handleCharSelection = (id: string) => {
 		//check if it match with provided char
 		// if true
-		let charMatched = checkCharMatch(mouseCoord, targetLocation);
+		let charMatched = checkCharMatch(id, mouseCoord, targetLocation);
 
 		if (charMatched) {
 			//adjust remaining char
