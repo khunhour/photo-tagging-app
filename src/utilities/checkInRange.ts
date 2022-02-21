@@ -1,10 +1,6 @@
-type Range = {
-	start: number;
-	end: number;
-};
 // check if x is within the range provided
-export const checkInRange = (range: Range, x: number) => {
-	if (x >= range.start && x <= range.end) {
+export const checkInRange = (xStart: number, xEnd: number, x: number) => {
+	if (x >= xStart && x <= xEnd) {
 		return true;
 	}
 	return false;
