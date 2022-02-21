@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 // components
-import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
 
 //fire base
 import { collection, getDocs } from "firebase/firestore";
@@ -29,6 +30,7 @@ const App: React.FC = () => {
 	const [targetLocation, setTargetLocation] = useState<TargetLocationType>(
 		[]
 	);
+
 	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
 
@@ -72,6 +74,7 @@ const App: React.FC = () => {
 	return (
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
+			<Home />
 			<Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}

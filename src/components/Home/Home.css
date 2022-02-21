@@ -1,0 +1,24 @@
+#home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.how-to-play,
+.objective,
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	border: solid 2px black;
+	padding-bottom: 20px;
+	width: 75vw;
+	border-radius: 4px;
+}
+
+ol {
+	margin: 0;
+}
