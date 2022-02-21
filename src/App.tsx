@@ -20,7 +20,8 @@ import { MouseCoordType } from "./type/mouseCoordType";
 const App: React.FC = () => {
 	// state hooks
 	const [showMarker, setShowMarker] = useState<boolean>(false);
-	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
+	const [remainingTarget, setRemainingTarget] =
+		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
 		x: 0,
 		y: 0,
@@ -58,6 +59,9 @@ const App: React.FC = () => {
 		if (charMatched) {
 			//adjust remaining char
 			//display result
+			setRemainingTarget(
+				remainingTarget.filter((obj) => obj.name.toLowerCase() !== id)
+			);
 			alert("Match");
 		} else {
 			//display result
@@ -67,7 +71,7 @@ const App: React.FC = () => {
 
 	return (
 		<div className="App">
-			<Header remainingTargetNum={remainingTarget.length} />
+			<Header remainingTarget={remainingTarget} />
 			<Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}

@@ -4,15 +4,15 @@ import "./Header.css";
 
 //type
 interface Props {
-	remainingTargetNum: number;
+	remainingTarget: { name: string; img: string }[];
 }
 
-const Header: React.FC<Props> = ({ remainingTargetNum }) => {
+const Header: React.FC<Props> = ({ remainingTarget }) => {
 	return (
 		<header>
 			<div className="logo">Seek&Find</div>
 			<div className="timer">Timer</div>
-			<div className="target">{remainingTargetNum}</div>
+			<div className="target">{remainingTarget.length}</div>
 		</header>
 	);
 };
