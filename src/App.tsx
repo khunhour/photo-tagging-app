@@ -10,12 +10,12 @@ import { db } from "./firebase-config";
 
 // helper functions import
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
-
-// type import
-import { TargetLocation } from "./type/targetLocation";
 import { checkCharMatch } from "./utilities/checkCharMatch";
-import { MouseCoordType } from "./type/mouseCoordType";
 import { findPercentageCoord } from "./utilities/findPercentageCoord";
+
+// type imports
+import { TargetLocationType } from "./type/targetLocationType";
+import { MouseCoordType } from "./type/mouseCoordType";
 
 const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState<boolean>(false);
@@ -24,7 +24,9 @@ const App: React.FC = () => {
 		y: 0,
 	});
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
-	const [targetLocation, setTargetLocation] = useState<TargetLocation>([]);
+	const [targetLocation, setTargetLocation] = useState<TargetLocationType>(
+		[]
+	);
 	const locationCollectionRef = collection(db, "target-location");
 
 	//fetch actual answers to target location

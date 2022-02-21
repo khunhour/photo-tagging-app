@@ -1,11 +1,11 @@
 import { MouseCoordType } from "../type/mouseCoordType";
-import { TargetLocation } from "../type/targetLocation";
+import { TargetLocationType } from "../type/targetLocationType";
 import { checkInRange } from "./checkInRange";
 
 export const checkCharMatch = (
 	id: string,
 	mouseCoord: MouseCoordType,
-	targetLocation: TargetLocation
+	targetLocation: TargetLocationType
 ) => {
 	let charMatched = "";
 	const { x, y } = mouseCoord;
