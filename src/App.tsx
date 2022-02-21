@@ -15,10 +15,12 @@ import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
 import { handleClickedPicType } from "./type/handleClickedPicType";
 import { TargetLocation } from "./type/targetLocation";
 import { checkCharMatch } from "./utilities/checkCharMatch";
+import { MouseCoord } from "./type/mouseCoord";
+import { findPercentageCoord } from "./utilities/findPercentageCoord";
 
 const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState<boolean>(false);
-	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
+	const [mouseCoord, setMouseCoord] = useState<MouseCoord>({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 	const [targetLocation, setTargetLocation] = useState<TargetLocation>([]);
 	const locationCollectionRef = collection(db, "target-location");
@@ -38,18 +40,23 @@ const App: React.FC = () => {
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: handleClickedPicType) => {
 		setShowMarker(!showMarker);
-		setMouseCoord({
-			x: e.pageX,
-			y: e.pageY,
-		});
+		let coord = findPercentageCoord(e);
+		setMouseCoord(coord);
 	};
 
-	const handleCharSelection = (e: handleClickedPicType) => {
+	const handleCharSelection = () => {
 		//check if it match with provided char
 		// if true
-		//adjust remaining char
-		//display result
-		checkCharMatch(e, targetLocation);
+		let charMatched = checkCharMatch(mouseCoord, targetLocation);
+
+		if (charMatched) {
+			//adjust remaining char
+			//display result
+			alert("Match");
+		} else {
+			//display result
+			alert("wrong");
+		}
 	};
 
 	return (

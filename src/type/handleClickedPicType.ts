@@ -1,5 +1,5 @@
 export type handleClickedPicType = {
-	currentTarget: HTMLElement;
+	target: HTMLElement;
 	pageX: number;
 	pageY: number;
 };

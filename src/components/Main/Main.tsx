@@ -13,7 +13,7 @@ interface Props {
 		img: string;
 	}[];
 	handleClickedPic: (e: any) => void;
-	handleCharSelection: (e: handleClickedPicType) => void;
+	handleCharSelection: (e: any) => void;
 }
 
 const Main: React.FC<Props> = ({

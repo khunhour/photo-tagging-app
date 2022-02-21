@@ -8,7 +8,7 @@ interface Props {
 		name: string;
 		img: string;
 	}[];
-	handleCharSelection: (e: handleClickedPicType) => void;
+	handleCharSelection: (e: any) => void;
 }
 
 const DropDown: React.FC<Props> = ({
@@ -16,16 +16,14 @@ const DropDown: React.FC<Props> = ({
 	remainingTarget,
 	handleCharSelection,
 }) => {
+	const position = {
+		top: `${mouseCoord.y}%`,
+		left: `${mouseCoord.x}%`,
+	};
 	return (
 		<>
-			<div
-				className="marker"
-				style={{ top: mouseCoord.y - 30, left: mouseCoord.x - 30 }}
-			></div>
-			<div
-				className="drop-down"
-				style={{ top: mouseCoord.y + 20, left: mouseCoord.x + 20 }}
-			>
+			<div className="marker" style={position}></div>
+			<div className="drop-down" style={position}>
 				{remainingTarget.map((target, index) => {
 					return (
 						<button

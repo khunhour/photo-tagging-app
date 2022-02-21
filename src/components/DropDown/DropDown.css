@@ -6,6 +6,8 @@
 	border-radius: 4px;
 	background-color: white;
 	gap: 3px;
+	margin-top: 20px;
+	margin-left: 20px;
 }
 
 .drop-down button {
@@ -27,5 +29,8 @@
 
 	border-radius: 50%;
 	border: solid 4px red;
+	margin-left: -30px;
+	margin-top: -30px;
+
 	box-sizing: border-box;
 }
