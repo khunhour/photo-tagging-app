@@ -18,15 +18,17 @@ import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 
 const App: React.FC = () => {
+	// state hooks
 	const [showMarker, setShowMarker] = useState<boolean>(false);
+	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
 		x: 0,
 		y: 0,
 	});
-	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 	const [targetLocation, setTargetLocation] = useState<TargetLocationType>(
 		[]
 	);
+	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
 
 	//fetch actual answers to target location
