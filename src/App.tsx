@@ -17,10 +17,10 @@ import { TargetLocation } from "./type/targetLocation";
 import { checkCharMatch } from "./utilities/checkCharMatch";
 
 const App: React.FC = () => {
-	const [showMarker, setShowMarker] = useState(false);
+	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [mouseCoord, setMouseCoord] = useState({ x: 0, y: 0 });
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
-	const [targetLocation, setTargetLocation] = useState<TargetLocation>();
+	const [targetLocation, setTargetLocation] = useState<TargetLocation>([]);
 	const locationCollectionRef = collection(db, "target-location");
 
 	//fetch actual answers to target location
@@ -29,10 +29,9 @@ const App: React.FC = () => {
 			const data = await getDocs(locationCollectionRef);
 			const formattedData = data.docs.map((doc) => ({
 				...doc.data(),
-			}))[0];
-			setTargetLocation(formattedData);
+			}));
+			setTargetLocation([...formattedData]);
 		};
-
 		getLocation();
 	}, []);
 

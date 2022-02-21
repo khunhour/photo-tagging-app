@@ -5,11 +5,9 @@ import { findPercentageCoord } from "./findPercentageCoord";
 
 export const checkCharMatch = (
 	e: handleClickedPicType,
-	targetLocation: TargetLocation | undefined
+	targetLocation: TargetLocation
 ) => {
 	const { x, y } = findPercentageCoord(e);
-
-	for (let key in targetLocation) {
-		console.log(key);
-	}
+	console.log(targetLocation);
+	console.log(Object.keys(targetLocation));
 };
