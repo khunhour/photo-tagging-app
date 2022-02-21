@@ -1,5 +1,3 @@
-import { handleClickedPicType } from "../type/handleClickedPicType";
-
 export const findPercentageCoord = (e: any) => {
 	//x percentage relative to img-container
 	console.log(e);

@@ -1,5 +1,4 @@
 import React from "react";
-import { handleClickedPicType } from "../../type/handleClickedPicType";
 import "./DropDown.css";
 
 interface Props {

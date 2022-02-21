@@ -1,12 +1,10 @@
-import { handleClickedPicType } from "../type/handleClickedPicType";
-import { MouseCoord } from "../type/mouseCoord";
+import { MouseCoordType } from "../type/mouseCoordType";
 import { TargetLocation } from "../type/targetLocation";
 import { checkInRange } from "./checkInRange";
-import { findPercentageCoord } from "./findPercentageCoord";
 
 export const checkCharMatch = (
 	id: string,
-	mouseCoord: MouseCoord,
+	mouseCoord: MouseCoordType,
 	targetLocation: TargetLocation
 ) => {
 	let charMatched = "";

@@ -1,5 +1,4 @@
 import React from "react";
-import { handleClickedPicType } from "../../type/handleClickedPicType";
 import DropDown from "../DropDown/DropDown";
 //css
 import "./Main.css";

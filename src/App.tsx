@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect } from "react";
 // components
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -12,15 +12,17 @@ import { db } from "./firebase-config";
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
 
 // type import
-import { handleClickedPicType } from "./type/handleClickedPicType";
 import { TargetLocation } from "./type/targetLocation";
 import { checkCharMatch } from "./utilities/checkCharMatch";
-import { MouseCoord } from "./type/mouseCoord";
+import { MouseCoordType } from "./type/mouseCoordType";
 import { findPercentageCoord } from "./utilities/findPercentageCoord";
 
 const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState<boolean>(false);
-	const [mouseCoord, setMouseCoord] = useState<MouseCoord>({ x: 0, y: 0 });
+	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
+		x: 0,
+		y: 0,
+	});
 	const [remainingTarget, setRemainingTarget] = useState(TARGET_CHARACTER);
 	const [targetLocation, setTargetLocation] = useState<TargetLocation>([]);
 	const locationCollectionRef = collection(db, "target-location");
@@ -38,7 +40,7 @@ const App: React.FC = () => {
 	}, []);
 
 	//handle when click on pic to show targetcircle and dropdown for selection
-	const handleClickedPic = (e: handleClickedPicType) => {
+	const handleClickedPic = (e: any) => {
 		setShowMarker(!showMarker);
 		let coord = findPercentageCoord(e);
 		setMouseCoord(coord);
