@@ -8,6 +8,7 @@ export const checkCharMatch = (
 	targetLocation: TargetLocation
 ) => {
 	const { x, y } = findPercentageCoord(e);
-	console.log(targetLocation);
-	console.log(Object.keys(targetLocation));
+	targetLocation.forEach((obj) => {
+		let xRange = checkInRange();
+	});
 };
