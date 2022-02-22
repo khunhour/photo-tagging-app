@@ -22,6 +22,9 @@ import { MouseCoordType } from "./type/mouseCoordType";
 const App: React.FC = () => {
 	// state hooks
 	const [showMarker, setShowMarker] = useState<boolean>(false);
+	const [showHome, setShoeHome] = useState<boolean>(true);
+	const [showLeaderboard, setShoeLeaderboard] = useState<boolean>(false);
+
 	const [remainingTarget, setRemainingTarget] =
 		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
@@ -72,10 +75,15 @@ const App: React.FC = () => {
 		}
 	};
 
+	const handleGameStart = () => {
+		setShoeHome(!showHome);
+	};
+
 	return (
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
-			<Home />
+			{/* {showHome && <Home />} */}
+			{/* <Home /> */}
 			<Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}
@@ -83,7 +91,8 @@ const App: React.FC = () => {
 				handleClickedPic={handleClickedPic}
 				handleCharSelection={handleCharSelection}
 			/>
-			<Leaderboard />
+			{showLeaderboard && <Leaderboard />}
+			{/* <Leaderboard /> */}
 			<Footer />
 		</div>
 	);
