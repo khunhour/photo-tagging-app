@@ -37,6 +37,12 @@ const Leaderboard = (props: Props) => {
 					</tr>
 				</table>
 			</div>
+			<a
+				href="https://www.flaticon.com/free-icons/find"
+				title="find icons"
+			>
+				Find icons created by Freepik - Flaticon
+			</a>
 		</div>
 	);
 };

@@ -1,7 +1,19 @@
 header {
-	background-color: darkslategray;
-	height: 60px;
+	background-color: var(--blue);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	color: white;
+}
+
+.logo {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+}
+
+.logo img {
+	height: 30px;
+	margin-bottom: 12px;
+	margin-right: 2px;
+	margin-left: 25px;
 }

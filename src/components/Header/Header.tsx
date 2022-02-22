@@ -10,9 +10,12 @@ interface Props {
 const Header: React.FC<Props> = ({ remainingTarget }) => {
 	return (
 		<header>
-			<div className="logo">Seek&Find</div>
-			<div className="timer">Timer</div>
-			<div className="target">{remainingTarget.length}</div>
+			<div className="logo">
+				<img src={require("../../images/searching.png")} />
+				<h2 className="logo">Seek&Find</h2>
+			</div>
+			<h2 className="timer">Timer</h2>
+			<h2 className="target">{remainingTarget.length}</h2>
 		</header>
 	);
 };

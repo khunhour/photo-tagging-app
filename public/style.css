@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+:root {
+	--blue: #027185;
+	--pale-blue: #1f98ad48;
+}
+
 html,
 body {
 	padding: 0;

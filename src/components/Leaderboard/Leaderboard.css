@@ -33,9 +33,13 @@ td {
 #leaderboard th {
 	background-color: #1f98ad;
 	color: white;
-	padding: 5px;
+	padding: 10px;
+}
+
+#leaderboard td {
+	padding: 7px;
 }
 
 #leaderboard tr:nth-child(odd) {
-	background-color: #1f98ad48;
+	background-color: var(--pale-blue);
 }
