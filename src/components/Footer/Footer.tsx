@@ -8,7 +8,7 @@ const Footer = (props: Props) => {
 		<footer>
 			<p>khunhour &copy;</p>
 			<a href="https://github.com/khunhour/photo-tagging-app">
-				<img src={require("../../images/github.png")} />
+				<img src={require("../../images/github.png")} alt="github" />
 			</a>
 		</footer>
 	);
