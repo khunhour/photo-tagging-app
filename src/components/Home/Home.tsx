@@ -5,13 +5,13 @@ type Props = {};
 const Home = (props: Props) => {
 	return (
 		<div id="home">
-			<h2>Seek&Find</h2>
+			<h1>Seek&Find</h1>
 			<div className="objective">
-				<h3>Objective</h3>
+				<h2>Objective</h2>
 				<div>Find all 3 cartoon characters as fast as possible!</div>
 			</div>
 			<div className="how-to-play">
-				<h3>How to Play</h3>
+				<h2>How to Play</h2>
 				<ol>
 					<li>Enter your name and click "Play".</li>
 					<li>The timer will start as soon as the image loads.</li>
@@ -22,7 +22,7 @@ const Home = (props: Props) => {
 				</ol>
 			</div>
 			<form>
-				<h3>Enter Your Name</h3>
+				<h2>Enter Your Name</h2>
 				<input placeholder="Peter Parker" />
 				<button type="submit">Play</button>
 			</form>

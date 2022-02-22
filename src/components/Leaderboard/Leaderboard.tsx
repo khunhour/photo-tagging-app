@@ -6,9 +6,9 @@ type Props = {};
 const Leaderboard = (props: Props) => {
 	return (
 		<div id="leaderboard">
-			<h2>Leaderboard</h2>
+			<h1>Leaderboard</h1>
 			<div className="ranking">
-				<h3>Ranking</h3>
+				<h2>Ranking</h2>
 				<table>
 					<tr>
 						<th>Rank</th>
