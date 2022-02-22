@@ -7,11 +7,11 @@ const Home = (props: Props) => {
 		<div id="home">
 			<h2>Seek&Find</h2>
 			<div className="objective">
-				<h3>Objective:</h3>
+				<h3>Objective</h3>
 				<div>Find all 3 characters as fast as possible!</div>
 			</div>
 			<div className="how-to-play">
-				<h3>How to Play:</h3>
+				<h3>How to Play</h3>
 				<ol>
 					<li>Enter your name and click "Play".</li>
 					<li>The timer will start as soon as the image loads.</li>
@@ -22,7 +22,7 @@ const Home = (props: Props) => {
 				</ol>
 			</div>
 			<form>
-				<h3>Enter Your Name:</h3>
+				<h3>Enter Your Name</h3>
 				<input placeholder="Peter Parker" />
 				<button type="submit">Play</button>
 			</form>
