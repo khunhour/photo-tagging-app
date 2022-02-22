@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Footer from "./components/Footer/Footer";
 
 //fire base
@@ -82,6 +83,7 @@ const App: React.FC = () => {
 				handleClickedPic={handleClickedPic}
 				handleCharSelection={handleCharSelection}
 			/>
+			<Leaderboard />
 			<Footer />
 		</div>
 	);
