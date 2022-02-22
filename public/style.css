@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
 html,
 body {
 	padding: 0;
 	margin: 0;
-	/* font-family: "Luckiest Guy", cursive; */
+	font-family: "Patua One", cursive;
+}
+
+button,
+input {
+	font-family: "Patua One", cursive;
 }
