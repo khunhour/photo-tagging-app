@@ -4,6 +4,7 @@ footer {
 	justify-content: center;
 	background-color: var(--blue);
 	color: white;
+	margin-top: 10px;
 }
 
 footer a img {
