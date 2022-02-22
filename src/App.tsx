@@ -83,7 +83,7 @@ const App: React.FC = () => {
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
 			{/* {showHome && <Home />} */}
-			{/* <Home /> */}
+			<Home />
 			<Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}
@@ -92,7 +92,7 @@ const App: React.FC = () => {
 				handleCharSelection={handleCharSelection}
 			/>
 			{showLeaderboard && <Leaderboard />}
-			{/* <Leaderboard /> */}
+			<Leaderboard />
 			<Footer />
 		</div>
 	);

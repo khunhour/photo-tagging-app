@@ -16,3 +16,10 @@ button,
 input {
 	font-family: "Patua One", cursive;
 }
+
+.wrapper {
+	background-color: rgba(0, 0, 0, 0.705);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
