@@ -1,0 +1,20 @@
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--blue);
+	color: white;
+}
+
+footer a img {
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	border-radius: 50%;
+	background-color: white;
+	border: solid 1px white;
+}
+
+footer a img:hover {
+	background-color: var(--pale-blue);
+}

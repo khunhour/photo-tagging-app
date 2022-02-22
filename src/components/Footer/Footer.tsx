@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import "./Footer.css";
 
-type Props = {}
+type Props = {};
 
-export default function Footer({}: Props) {
-  return (
-    <footer>Footer</footer>
-  )
-}
+const Footer = (props: Props) => {
+	return (
+		<footer>
+			<p>khunhour &copy;</p>
+			<a href="https://github.com/khunhour/photo-tagging-app">
+				<img src={require("../../images/github.png")} />
+			</a>
+		</footer>
+	);
+};
+
+export default Footer;
