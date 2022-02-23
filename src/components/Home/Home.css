@@ -4,6 +4,8 @@
 	align-items: center;
 	justify-content: center;
 	background-color: white;
+	background-color: #003d47;
+	color: white;
 }
 
 .how-to-play,
@@ -14,10 +16,11 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
-	border: solid 2px black;
+	/* border: solid 2px rgb(255, 255, 255); */
 	padding-bottom: 20px;
 	width: 75vw;
 	border-radius: 4px;
+	background-color: var(--blue);
 }
 
 #home ol {

@@ -24,7 +24,7 @@ const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [showHome, setShoeHome] = useState<boolean>(true);
 	const [showLeaderboard, setShoeLeaderboard] = useState<boolean>(false);
-
+	const [currentPlayer, setCurrentPlayer] = useState<string>("");
 	const [remainingTarget, setRemainingTarget] =
 		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
@@ -75,24 +75,30 @@ const App: React.FC = () => {
 		}
 	};
 
-	const handleGameStart = () => {
+	const handleGameStart = (e: any) => {
+		e.preventDefault();
 		setShoeHome(!showHome);
+	};
+
+	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCurrentPlayer(e.target.value);
+		console.log(currentPlayer);
 	};
 
 	return (
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
 			{/* {showHome && <Home />} */}
-			<Home />
-			<Main
+			<Home handleNameChange={handleNameChange} />
+			{/* <Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}
 				remainingTarget={remainingTarget}
 				handleClickedPic={handleClickedPic}
 				handleCharSelection={handleCharSelection}
-			/>
-			{showLeaderboard && <Leaderboard />}
-			<Leaderboard />
+			/> */}
+			{/* {showLeaderboard && <Leaderboard />}
+			<Leaderboard /> */}
 			<Footer />
 		</div>
 	);

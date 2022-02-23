@@ -1,8 +1,10 @@
 import React from "react";
 import "./Home.css";
-type Props = {};
+type Props = {
+	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-const Home = (props: Props) => {
+const Home: React.FC<Props> = ({ handleNameChange }) => {
 	return (
 		<div className="wrapper">
 			<div id="home">
@@ -30,7 +32,11 @@ const Home = (props: Props) => {
 				</div>
 				<form>
 					<h2>Enter Your Name</h2>
-					<input placeholder="Peter Parker" />
+					<input
+						placeholder="Peter Parker"
+						required
+						onChange={handleNameChange}
+					/>
 					<button type="submit">Play</button>
 				</form>
 			</div>
