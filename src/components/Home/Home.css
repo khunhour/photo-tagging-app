@@ -8,21 +8,6 @@
 	color: white;
 }
 
-.how-to-play,
-.objective,
-#home form {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 20px;
-	/* border: solid 2px rgb(255, 255, 255); */
-	padding-bottom: 20px;
-	width: 75vw;
-	border-radius: 4px;
-	background-color: var(--blue);
-}
-
 #home ol {
 	margin: 0;
 }

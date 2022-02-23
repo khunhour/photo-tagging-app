@@ -12,11 +12,27 @@ body {
 	font-family: "Patua One", cursive;
 }
 
+.how-to-play,
+.objective,
+#home form,
+.result {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	/* border: solid 2px rgb(255, 255, 255); */
+	padding-bottom: 20px;
+	width: 75vw;
+	border-radius: 4px;
+	background-color: var(--blue);
+	color: white;
+}
+
 button,
 input {
 	font-family: "Patua One", cursive;
 }
-
 /* .wrapper {
 	background-color: rgba(0, 0, 0, 0.705);
 	display: flex;

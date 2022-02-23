@@ -19,6 +19,7 @@ import { findPercentageCoord } from "./utilities/findPercentageCoord";
 import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { checkGameOver } from "./utilities/checkGameOver";
+import Result from "./components/Result/Result";
 
 const App: React.FC = () => {
 	// state hooks
@@ -108,6 +109,7 @@ const App: React.FC = () => {
 				handleClickedPic={handleClickedPic}
 				handleCharSelection={handleCharSelection}
 			/>
+			<Result />
 			{showLeaderboard && <Leaderboard />}
 			<Footer />
 		</div>
