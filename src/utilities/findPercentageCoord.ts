@@ -1,6 +1,5 @@
 export const findPercentageCoord = (e: any) => {
 	//x percentage relative to img-container
-	console.log(e);
 	let x =
 		Math.floor(
 			((e.pageX - e.currentTarget.offsetLeft) /
@@ -14,6 +13,5 @@ export const findPercentageCoord = (e: any) => {
 				e.currentTarget.offsetHeight) *
 				10000
 		) / 100;
-	console.log({ x, y });
 	return { x, y };
 };

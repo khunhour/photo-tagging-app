@@ -18,12 +18,13 @@ import { findPercentageCoord } from "./utilities/findPercentageCoord";
 // type imports
 import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
+import { checkGameOver } from "./utilities/checkGameOver";
 
 const App: React.FC = () => {
 	// state hooks
 	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [showHome, setShoeHome] = useState<boolean>(true);
-	const [showLeaderboard, setShoeLeaderboard] = useState<boolean>(false);
+	const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false);
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
 	const [remainingTarget, setRemainingTarget] =
 		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
@@ -50,8 +51,16 @@ const App: React.FC = () => {
 		getLocation();
 	}, []);
 
+	//check if game over
+	useEffect(() => {
+		if (checkGameOver(remainingTarget)) {
+			setShowLeaderboard(true);
+		}
+	}, [remainingTarget]);
+
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: any) => {
+		if (checkGameOver(remainingTarget)) return;
 		setShowMarker(!showMarker);
 		let coord = findPercentageCoord(e);
 		setMouseCoord(coord);
@@ -78,7 +87,6 @@ const App: React.FC = () => {
 	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setShoeHome(!showHome);
-		console.log("gamestart");
 	};
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,19 +97,18 @@ const App: React.FC = () => {
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
 			{/* {showHome && <Home />} */}
-			<Home
+			{/* <Home
 				handleNameChange={handleNameChange}
 				handleGameStart={handleGameStart}
-			/>
-			{/* <Main
+			/> */}
+			<Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}
 				remainingTarget={remainingTarget}
 				handleClickedPic={handleClickedPic}
 				handleCharSelection={handleCharSelection}
-			/> */}
-			{/* {showLeaderboard && <Leaderboard />}
-			<Leaderboard /> */}
+			/>
+			{showLeaderboard && <Leaderboard />}
 			<Footer />
 		</div>
 	);
