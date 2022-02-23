@@ -20,6 +20,7 @@ import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { checkGameOver } from "./utilities/checkGameOver";
 import Result from "./components/Result/Result";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App: React.FC = () => {
 	// state hooks
@@ -97,20 +98,39 @@ const App: React.FC = () => {
 	return (
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
-			{/* {showHome && <Home />} */}
-			{/* <Home
-				handleNameChange={handleNameChange}
-				handleGameStart={handleGameStart}
-			/> */}
-			<Main
-				showMarker={showMarker}
-				mouseCoord={mouseCoord}
-				remainingTarget={remainingTarget}
-				handleClickedPic={handleClickedPic}
-				handleCharSelection={handleCharSelection}
-			/>
-			<Result />
-			{showLeaderboard && <Leaderboard />}
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							{/* {showHome && <Home />} */}
+							<Home
+								handleNameChange={handleNameChange}
+								handleGameStart={handleGameStart}
+							/>
+						</>
+					}
+				/>
+				<Route
+					path="/game"
+					element={
+						<>
+							<Main
+								showMarker={showMarker}
+								mouseCoord={mouseCoord}
+								remainingTarget={remainingTarget}
+								handleClickedPic={handleClickedPic}
+								handleCharSelection={handleCharSelection}
+							/>
+							<Result />
+						</>
+					}
+				/>
+				<Route
+					path="/leaderboard"
+					element={<>{showLeaderboard && <Leaderboard />}</>}
+				/>
+			</Routes>
 			<Footer />
 		</div>
 	);
