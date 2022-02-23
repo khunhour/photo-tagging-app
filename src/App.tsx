@@ -75,21 +75,24 @@ const App: React.FC = () => {
 		}
 	};
 
-	const handleGameStart = (e: any) => {
+	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setShoeHome(!showHome);
+		console.log("gamestart");
 	};
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCurrentPlayer(e.target.value);
-		console.log(currentPlayer);
 	};
 
 	return (
 		<div className="App">
 			<Header remainingTarget={remainingTarget} />
 			{/* {showHome && <Home />} */}
-			<Home handleNameChange={handleNameChange} />
+			<Home
+				handleNameChange={handleNameChange}
+				handleGameStart={handleGameStart}
+			/>
 			{/* <Main
 				showMarker={showMarker}
 				mouseCoord={mouseCoord}

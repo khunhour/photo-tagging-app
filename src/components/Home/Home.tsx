@@ -2,9 +2,10 @@ import React from "react";
 import "./Home.css";
 type Props = {
 	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleGameStart: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-const Home: React.FC<Props> = ({ handleNameChange }) => {
+const Home: React.FC<Props> = ({ handleNameChange, handleGameStart }) => {
 	return (
 		<div className="wrapper">
 			<div id="home">
@@ -30,7 +31,7 @@ const Home: React.FC<Props> = ({ handleNameChange }) => {
 						<li>See your scores on the Leaderboard.</li>
 					</ol>
 				</div>
-				<form>
+				<form onSubmit={handleGameStart}>
 					<h2>Enter Your Name</h2>
 					<input
 						placeholder="Peter Parker"
