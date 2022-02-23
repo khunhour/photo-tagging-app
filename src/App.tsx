@@ -53,13 +53,6 @@ const App: React.FC = () => {
 		getLocation();
 	}, []);
 
-	//check if game over
-	useEffect(() => {
-		if (checkGameOver(remainingTarget)) {
-			setShowLeaderboard(true);
-		}
-	}, [remainingTarget]);
-
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: any) => {
 		if (checkGameOver(remainingTarget)) return;
@@ -122,7 +115,6 @@ const App: React.FC = () => {
 								handleClickedPic={handleClickedPic}
 								handleCharSelection={handleCharSelection}
 							/>
-							<Result />
 						</>
 					}
 				/>

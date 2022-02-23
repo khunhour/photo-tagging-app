@@ -1,5 +1,7 @@
 import React from "react";
+import { checkGameOver } from "../../utilities/checkGameOver";
 import DropDown from "../DropDown/DropDown";
+import Result from "../Result/Result";
 //css
 import "./Main.css";
 
@@ -22,6 +24,7 @@ const Main: React.FC<Props> = ({
 	handleClickedPic,
 	handleCharSelection,
 }) => {
+	const isGameOver = checkGameOver(remainingTarget);
 	return (
 		<div className="img-container" onClick={handleClickedPic}>
 			<img
@@ -35,6 +38,7 @@ const Main: React.FC<Props> = ({
 					handleCharSelection={handleCharSelection}
 				/>
 			) : null}
+			{isGameOver ? <Result /> : null}
 		</div>
 	);
 };
