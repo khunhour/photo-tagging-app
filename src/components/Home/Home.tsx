@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 type Props = {
 	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -38,7 +39,9 @@ const Home: React.FC<Props> = ({ handleNameChange, handleGameStart }) => {
 						required
 						onChange={handleNameChange}
 					/>
-					<button type="submit">Play</button>
+					<button type="submit">
+						<Link to="/game">Play</Link>
+					</button>
 				</form>
 			</div>
 		</div>
