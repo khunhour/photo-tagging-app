@@ -19,14 +19,14 @@ import { findPercentageCoord } from "./utilities/findPercentageCoord";
 import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { checkGameOver } from "./utilities/checkGameOver";
-import Result from "./components/Result/Result";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const App: React.FC = () => {
 	// state hooks
 	const [showMarker, setShowMarker] = useState<boolean>(false);
-	const [showHome, setShoeHome] = useState<boolean>(true);
-	const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false);
+	const [showResult, setShowResult] = useState<boolean>(false);
+	const [gameOver, setGameOver] = useState<boolean>(false);
+
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
 	const [remainingTarget, setRemainingTarget] =
 		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
@@ -88,6 +88,11 @@ const App: React.FC = () => {
 		setCurrentPlayer(e.target.value);
 	};
 
+	const handleGameOver = () => {
+		if (checkGameOver(remainingTarget)) {
+			setGameOver(true);
+		}
+	};
 	return (
 		<div className="app">
 			<Header remainingTarget={remainingTarget} />
@@ -107,15 +112,14 @@ const App: React.FC = () => {
 				<Route
 					path="/game"
 					element={
-						<>
-							<Main
-								showMarker={showMarker}
-								mouseCoord={mouseCoord}
-								remainingTarget={remainingTarget}
-								handleClickedPic={handleClickedPic}
-								handleCharSelection={handleCharSelection}
-							/>
-						</>
+						<Main
+							showMarker={showMarker}
+							gameOver={gameOver}
+							mouseCoord={mouseCoord}
+							remainingTarget={remainingTarget}
+							handleClickedPic={handleClickedPic}
+							handleCharSelection={handleCharSelection}
+						/>
 					}
 				/>
 				<Route path="/leaderboard" element={<Leaderboard />} />

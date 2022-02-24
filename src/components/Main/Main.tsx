@@ -8,6 +8,7 @@ import "./Main.css";
 //types
 interface Props {
 	showMarker: boolean;
+	gameOver: boolean;
 	mouseCoord: { x: number; y: number };
 	remainingTarget: {
 		name: string;
@@ -19,12 +20,12 @@ interface Props {
 
 const Main: React.FC<Props> = ({
 	showMarker,
+	gameOver,
 	mouseCoord,
 	remainingTarget,
 	handleClickedPic,
 	handleCharSelection,
 }) => {
-	const isGameOver = checkGameOver(remainingTarget);
 	return (
 		<div className="img-container" onClick={handleClickedPic}>
 			<img
@@ -38,7 +39,7 @@ const Main: React.FC<Props> = ({
 					handleCharSelection={handleCharSelection}
 				/>
 			) : null}
-			{isGameOver ? <Result /> : null}
+			{gameOver ? <Result /> : null}
 		</div>
 	);
 };
