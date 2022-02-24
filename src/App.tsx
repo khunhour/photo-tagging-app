@@ -20,6 +20,7 @@ import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { checkGameOver } from "./utilities/checkGameOver";
 import { Route, Routes } from "react-router-dom";
+import Result from "./components/Result/Result";
 
 const App: React.FC = () => {
 	// state hooks
@@ -52,6 +53,13 @@ const App: React.FC = () => {
 		};
 		getLocation();
 	}, []);
+
+	useEffect(() => {
+		const isGameOver = checkGameOver(remainingTarget);
+		if (isGameOver) {
+			setGameOver(true);
+		}
+	}, [remainingTarget]);
 
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: any) => {
@@ -88,10 +96,9 @@ const App: React.FC = () => {
 		setCurrentPlayer(e.target.value);
 	};
 
-	const handleGameOver = () => {
-		if (checkGameOver(remainingTarget)) {
-			setGameOver(true);
-		}
+	const handleRestartGame = () => {
+		setGameOver(false);
+		setTargetLocation(TARGET_CHARACTER);
 	};
 	return (
 		<div className="app">
@@ -112,14 +119,20 @@ const App: React.FC = () => {
 				<Route
 					path="/game"
 					element={
-						<Main
-							showMarker={showMarker}
-							gameOver={gameOver}
-							mouseCoord={mouseCoord}
-							remainingTarget={remainingTarget}
-							handleClickedPic={handleClickedPic}
-							handleCharSelection={handleCharSelection}
-						/>
+						<>
+							<Main
+								showMarker={showMarker}
+								gameOver={gameOver}
+								mouseCoord={mouseCoord}
+								remainingTarget={remainingTarget}
+								handleClickedPic={handleClickedPic}
+								handleCharSelection={handleCharSelection}
+								handleRestartGame={handleRestartGame}
+							/>
+							{gameOver && (
+								<Result handleRestartGame={handleRestartGame} />
+							)}
+						</>
 					}
 				/>
 				<Route path="/leaderboard" element={<Leaderboard />} />
