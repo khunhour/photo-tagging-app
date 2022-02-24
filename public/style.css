@@ -12,6 +12,13 @@ body {
 	font-family: "Patua One", cursive;
 }
 
+.app {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 .how-to-play,
 .objective,
 #home form,

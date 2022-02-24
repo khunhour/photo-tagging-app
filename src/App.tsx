@@ -89,7 +89,7 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<div className="App">
+		<div className="app">
 			<Header remainingTarget={remainingTarget} />
 			<Routes>
 				<Route
