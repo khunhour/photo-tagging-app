@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 // components
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -96,10 +96,12 @@ const App: React.FC = () => {
 		setCurrentPlayer(e.target.value);
 	};
 
-	const handleRestartGame = () => {
+	const handleRestartGame = (destination: string) => {
 		setGameOver(false);
 		setTargetLocation(TARGET_CHARACTER);
+		window.location.href = "/" + destination;
 	};
+
 	return (
 		<div className="app">
 			<Header remainingTarget={remainingTarget} />
@@ -127,7 +129,6 @@ const App: React.FC = () => {
 								remainingTarget={remainingTarget}
 								handleClickedPic={handleClickedPic}
 								handleCharSelection={handleCharSelection}
-								handleRestartGame={handleRestartGame}
 							/>
 							{gameOver && (
 								<Result handleRestartGame={handleRestartGame} />

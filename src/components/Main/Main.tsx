@@ -16,7 +16,6 @@ interface Props {
 	}[];
 	handleClickedPic: (e: any) => void;
 	handleCharSelection: (e: any) => void;
-	handleRestartGame: () => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -26,7 +25,6 @@ const Main: React.FC<Props> = ({
 	remainingTarget,
 	handleClickedPic,
 	handleCharSelection,
-	handleRestartGame,
 }) => {
 	return (
 		<div className="img-container" onClick={handleClickedPic}>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Result.css";
 type Props = {
-	handleRestartGame: () => void;
+	handleRestartGame: (destination: string) => void;
 };
 
 const Result: React.FC<Props> = ({ handleRestartGame }) => {
@@ -11,12 +11,10 @@ const Result: React.FC<Props> = ({ handleRestartGame }) => {
 			<h2>Your Score</h2>
 			<div>Time</div>
 			<div className="button-container">
-				<Link to="/">
-					<button onClick={handleRestartGame}>Home</button>
-				</Link>
-				<Link to="/leaderboard">
-					<button onClick={handleRestartGame}>Leaderboard</button>
-				</Link>
+				<button onClick={() => handleRestartGame("")}>Home</button>
+				<button onClick={() => handleRestartGame("leaderboard")}>
+					Leaderboard
+				</button>
 			</div>
 		</div>
 	);
