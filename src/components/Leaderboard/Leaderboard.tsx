@@ -10,12 +10,14 @@ const Leaderboard = (props: Props) => {
 		<div className="wrapper">
 			<div id="leaderboard">
 				<h1>Leaderboard</h1>
-				<Link to="/">
-					<button>{"<"} Back Home</button>
-				</Link>
-				<Link to="/game">
-					<button>Play Again {">"}</button>
-				</Link>
+				<div className="button-container">
+					<Link to="/">
+						<button>{"<"} Back Home</button>
+					</Link>
+					<Link to="/game">
+						<button>Play Again {">"}</button>
+					</Link>
+				</div>
 				<div className="ranking">
 					<h2>Ranking</h2>
 					<table>
