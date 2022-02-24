@@ -81,7 +81,7 @@ const App: React.FC = () => {
 
 	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setShoeHome(!showHome);
+		// setShoeHome(!showHome);
 	};
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,10 +118,7 @@ const App: React.FC = () => {
 						</>
 					}
 				/>
-				<Route
-					path="/leaderboard"
-					element={<>{showLeaderboard && <Leaderboard />}</>}
-				/>
+				<Route path="/leaderboard" element={<Leaderboard />} />
 			</Routes>
 			<Footer />
 		</div>

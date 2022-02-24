@@ -1,6 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
 import "./Leaderboard.css";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -9,6 +10,12 @@ const Leaderboard = (props: Props) => {
 		<div className="wrapper">
 			<div id="leaderboard">
 				<h1>Leaderboard</h1>
+				<Link to="/">
+					<button>{"<"} Back Home</button>
+				</Link>
+				<Link to="/game">
+					<button>Play Again {">"}</button>
+				</Link>
 				<div className="ranking">
 					<h2>Ranking</h2>
 					<table>
