@@ -19,7 +19,7 @@ import { findPercentageCoord } from "./utilities/findPercentageCoord";
 import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { checkGameOver } from "./utilities/checkGameOver";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Result from "./components/Result/Result";
 
 const App: React.FC = () => {
@@ -31,6 +31,7 @@ const App: React.FC = () => {
 	const [gameOver, setGameOver] = useState<boolean>(false);
 
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
+	const navigate = useNavigate();
 	const [remainingTarget, setRemainingTarget] =
 		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
@@ -58,15 +59,16 @@ const App: React.FC = () => {
 
 	//start timer/stop watch on game start
 	useEffect(() => {
-		const timer = setInterval(
-			() => setCount((prevCount) => prevCount + 1),
-			1000
-		);
-
-		return () => {
-			clearInterval(timer);
-		};
-	}, []);
+		if (gameStart) {
+			var timer = setInterval(
+				() => setCount((prevCount) => prevCount + 1),
+				1000
+			);
+			return () => {
+				clearInterval(timer);
+			};
+		}
+	}, [gameStart]);
 
 	//check if the game is over when remaining Target changes
 	useEffect(() => {
@@ -102,9 +104,11 @@ const App: React.FC = () => {
 		}
 	};
 
-	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		window.location.href = "/game";
+	const handleGameStart = async (e: React.FormEvent<HTMLFormElement>) => {
+		// e.preventDefault();
+		await setGameStart(true);
+		console.log(gameStart);
+		navigate("/game", { replace: true });
 		// setShoeHome(!showHome);
 	};
 
@@ -112,10 +116,13 @@ const App: React.FC = () => {
 		setCurrentPlayer(e.target.value);
 	};
 
-	const handleRestartGame = (destination: string) => {
+	const handleRestartGame = async (destination: string) => {
+		setCount(0);
+		setGameStart(true);
 		setGameOver(false);
 		setTargetLocation(TARGET_CHARACTER);
-		window.location.href = "/" + destination;
+		navigate(`/${destination}`, { replace: true });
+		// window.location.href = "/" + destination;
 	};
 
 	return (

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 type Props = {
 	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
