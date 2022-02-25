@@ -2,9 +2,11 @@ table,
 tr,
 th,
 td {
-	border: solid 1px black;
+	border: solid 1.5px black;
 	border-collapse: collapse;
 	text-align: center;
+	color: var(--dark-blue);
+	background-color: white;
 }
 
 #leaderboard table {
@@ -12,8 +14,7 @@ td {
 }
 
 #leaderboard th {
-	background-color: #1f98ad;
-	color: white;
+	background-color: var(--pale-blue);
 	padding: 10px;
 }
 
@@ -23,4 +24,7 @@ td {
 
 #leaderboard tr:nth-child(odd) {
 	background-color: var(--pale-blue);
+}
+#leaderboard tr:nth-child(even) {
+	background-color: white;
 }
