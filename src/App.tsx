@@ -24,6 +24,7 @@ import Result from "./components/Result/Result";
 
 const App: React.FC = () => {
 	// state hooks
+	const [count, setCount] = useState<number>(0);
 	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [showResult, setShowResult] = useState<boolean>(false);
 	const [gameOver, setGameOver] = useState<boolean>(false);
@@ -54,6 +55,19 @@ const App: React.FC = () => {
 		getLocation();
 	}, []);
 
+	//start timer/stop watch on game start
+	useEffect(() => {
+		const timer = setInterval(
+			() => setCount((prevCount) => prevCount + 1),
+			1000
+		);
+
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
+
+	//check if the game is over when remaining Target changes
 	useEffect(() => {
 		const isGameOver = checkGameOver(remainingTarget);
 		if (isGameOver) {
@@ -105,7 +119,7 @@ const App: React.FC = () => {
 
 	return (
 		<div className="app">
-			<Header remainingTarget={remainingTarget} />
+			<Header remainingTarget={remainingTarget} count={count} />
 			<Routes>
 				<Route
 					path="/"
