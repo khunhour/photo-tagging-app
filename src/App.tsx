@@ -125,7 +125,12 @@ const App: React.FC = () => {
 
 	return (
 		<div className="app">
-			<Header remainingTarget={remainingTarget} count={count} />
+			<Header
+				remainingTarget={remainingTarget}
+				count={count}
+				gameStart={gameStart}
+				gameOver={gameOver}
+			/>
 			<Routes>
 				<Route
 					path="/"

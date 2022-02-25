@@ -7,17 +7,33 @@ import "./Header.css";
 interface Props {
 	remainingTarget: { name: string; img: string }[];
 	count: number;
+	gameStart: boolean;
+	gameOver: boolean;
 }
 
-const Header: React.FC<Props> = ({ remainingTarget, count }) => {
+const Header: React.FC<Props> = ({
+	remainingTarget,
+	count,
+	gameStart,
+	gameOver,
+}) => {
 	return (
 		<header>
-			<div className="logo">
-				<img src={require("../../images/searching.png")} alt="logo" />
-				<h2 className="logo">Seek&Find</h2>
-			</div>
-			<h2 className="timer">{formatSeconds(count)}</h2>
-			<h2 className="target">{remainingTarget.length}</h2>
+			{!gameStart && !gameOver && (
+				<div className="logo">
+					<img
+						src={require("../../images/searching.png")}
+						alt="logo"
+					/>
+					<h1>Seek&Find</h1>
+				</div>
+			)}
+			{(gameStart || gameOver) && (
+				<>
+					<h1 className="timer">{formatSeconds(count)}</h1>
+					<h1 className="target">{remainingTarget.length}</h1>
+				</>
+			)}
 		</header>
 	);
 };
