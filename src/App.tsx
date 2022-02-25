@@ -89,6 +89,7 @@ const App: React.FC = () => {
 
 	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		window.location.href = "/game";
 		// setShoeHome(!showHome);
 	};
 

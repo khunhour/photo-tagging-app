@@ -39,9 +39,7 @@ const Home: React.FC<Props> = ({ handleNameChange, handleGameStart }) => {
 						required
 						onChange={handleNameChange}
 					/>
-					<button type="submit">
-						<Link to="/game">Play</Link>
-					</button>
+					<button type="submit">Play</button>
 				</form>
 			</div>
 		</div>
