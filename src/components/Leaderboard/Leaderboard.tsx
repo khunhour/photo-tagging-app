@@ -3,9 +3,11 @@ import TableRow from "./TableRow";
 import "./Leaderboard.css";
 import { Link } from "react-router-dom";
 
-type Props = {};
+type Props = {
+	handleGameStart: (e: any) => void;
+};
 
-const Leaderboard = (props: Props) => {
+const Leaderboard: React.FC<Props> = ({ handleGameStart }) => {
 	return (
 		<div className="wrapper">
 			<div id="leaderboard">
@@ -14,9 +16,7 @@ const Leaderboard = (props: Props) => {
 					<Link to="/">
 						<button>{"<"} Back Home</button>
 					</Link>
-					<Link to="/game">
-						<button>Play Again {">"}</button>
-					</Link>
+					<button onClick={handleGameStart}>Play Again {">"}</button>
 				</div>
 				<div className="ranking">
 					<h2>Ranking</h2>

@@ -108,7 +108,7 @@ const App: React.FC = () => {
 	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setGameStart(true);
-		console.log(gameStart);
+		setGameOver(false);
 		navigate("/game", { replace: true });
 	};
 
@@ -119,7 +119,7 @@ const App: React.FC = () => {
 	const handleGameOver = (destination: string) => {
 		setCount(0);
 		setGameOver(false);
-		setTargetLocation(TARGET_CHARACTER);
+		setRemainingTarget(TARGET_CHARACTER);
 		navigate(`/${destination}`, { replace: true });
 	};
 
@@ -157,7 +157,10 @@ const App: React.FC = () => {
 						</>
 					}
 				/>
-				<Route path="/leaderboard" element={<Leaderboard />} />
+				<Route
+					path="/leaderboard"
+					element={<Leaderboard handleGameStart={handleGameStart} />}
+				/>
 			</Routes>
 			<Footer />
 		</div>
