@@ -1,14 +1,3 @@
-#home {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
-	background-color: #003d47;
-	color: white;
-	padding-bottom: 30px;
-}
-
 #home ol {
 	margin: 0;
 }
