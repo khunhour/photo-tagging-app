@@ -27,6 +27,7 @@ const App: React.FC = () => {
 	const [count, setCount] = useState<number>(0);
 	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [showResult, setShowResult] = useState<boolean>(false);
+	const [gameStart, setGameStart] = useState<boolean>(false);
 	const [gameOver, setGameOver] = useState<boolean>(false);
 
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
