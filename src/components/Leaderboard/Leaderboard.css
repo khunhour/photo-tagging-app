@@ -6,16 +6,17 @@ td {
 	border-collapse: collapse;
 	text-align: center;
 	color: var(--dark-blue);
-	background-color: white;
 }
 
 #leaderboard table {
 	min-width: 65vw;
+	background-color: white;
 }
 
 #leaderboard th {
-	background-color: var(--pale-blue);
+	background-color: var(--dark-blue);
 	padding: 10px;
+	color: white;
 }
 
 #leaderboard td {
@@ -27,4 +28,8 @@ td {
 }
 #leaderboard tr:nth-child(even) {
 	background-color: white;
+}
+
+#leaderboard a {
+	color: white;
 }
