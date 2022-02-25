@@ -75,6 +75,7 @@ const App: React.FC = () => {
 		const isGameOver = checkGameOver(remainingTarget);
 		if (isGameOver) {
 			setGameOver(true);
+			setGameStart(false);
 		}
 	}, [remainingTarget]);
 
@@ -104,25 +105,22 @@ const App: React.FC = () => {
 		}
 	};
 
-	const handleGameStart = async (e: React.FormEvent<HTMLFormElement>) => {
-		// e.preventDefault();
-		await setGameStart(true);
+	const handleGameStart = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setGameStart(true);
 		console.log(gameStart);
 		navigate("/game", { replace: true });
-		// setShoeHome(!showHome);
 	};
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCurrentPlayer(e.target.value);
 	};
 
-	const handleRestartGame = async (destination: string) => {
+	const handleGameOver = (destination: string) => {
 		setCount(0);
-		setGameStart(true);
 		setGameOver(false);
 		setTargetLocation(TARGET_CHARACTER);
 		navigate(`/${destination}`, { replace: true });
-		// window.location.href = "/" + destination;
 	};
 
 	return (
@@ -154,7 +152,7 @@ const App: React.FC = () => {
 								handleCharSelection={handleCharSelection}
 							/>
 							{gameOver && (
-								<Result handleRestartGame={handleRestartGame} />
+								<Result handleGameOver={handleGameOver} />
 							)}
 						</>
 					}
