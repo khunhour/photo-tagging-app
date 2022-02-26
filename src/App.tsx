@@ -1,8 +1,11 @@
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+
 // components
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
+import Result from "./components/Result/Result";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Footer from "./components/Footer/Footer";
 
@@ -14,26 +17,24 @@ import { db } from "./firebase-config";
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
 import { checkCharMatch } from "./utilities/checkCharMatch";
 import { findPercentageCoord } from "./utilities/findPercentageCoord";
+import { checkGameOver } from "./utilities/checkGameOver";
 
 // type imports
 import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
-import { checkGameOver } from "./utilities/checkGameOver";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import Result from "./components/Result/Result";
+import { LeaderboardType } from "./type/LeaderboardType";
+import { CharacterType } from "./type/CharacterType";
 
 const App: React.FC = () => {
 	// state hooks
 	const [count, setCount] = useState<number>(0);
 	const [showMarker, setShowMarker] = useState<boolean>(false);
-	const [showResult, setShowResult] = useState<boolean>(false);
 	const [gameStart, setGameStart] = useState<boolean>(false);
 	const [gameOver, setGameOver] = useState<boolean>(false);
-
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
-	const navigate = useNavigate();
+	const [leaderboard, setLeaderboard] = useState<LeaderboardType>();
 	const [remainingTarget, setRemainingTarget] =
-		useState<{ name: string; img: string }[]>(TARGET_CHARACTER);
+		useState<CharacterType>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
 		x: 0,
 		y: 0,
@@ -41,11 +42,19 @@ const App: React.FC = () => {
 	const [targetLocation, setTargetLocation] = useState<TargetLocationType>(
 		[]
 	);
+	const navigate = useNavigate();
 
 	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
 	const leaderboardRef = collection(db, "leaderboard");
 
+	// function to upload user data to database
+	const createNewScore = async () => {
+		await addDoc(leaderboardRef, {
+			name: currentPlayer,
+			time: count,
+		});
+	};
 	//fetch actual answers to target location
 	useEffect(() => {
 		const getLocation = async () => {
@@ -54,11 +63,12 @@ const App: React.FC = () => {
 				...doc.data(),
 				id: doc.id,
 			}));
-			console.log(formattedData);
 			setTargetLocation([...formattedData]);
 		};
 		getLocation();
 	}, []);
+
+	//fetch
 
 	//start timer/stop watch on game start
 	useEffect(() => {
@@ -79,12 +89,6 @@ const App: React.FC = () => {
 		if (isGameOver) {
 			setGameOver(true);
 			setGameStart(false);
-			const createNewScore = async () => {
-				await addDoc(leaderboardRef, {
-					name: currentPlayer,
-					time: count,
-				});
-			};
 			createNewScore();
 		}
 	}, [remainingTarget]);
@@ -145,14 +149,11 @@ const App: React.FC = () => {
 				<Route
 					path="/"
 					element={
-						<>
-							{/* {showHome && <Home />} */}
-							<Home
-								handleNameChange={handleNameChange}
-								handleGameStart={handleGameStart}
-								currentPlayer={currentPlayer}
-							/>
-						</>
+						<Home
+							handleNameChange={handleNameChange}
+							handleGameStart={handleGameStart}
+							currentPlayer={currentPlayer}
+						/>
 					}
 				/>
 				<Route
