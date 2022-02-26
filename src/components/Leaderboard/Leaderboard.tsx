@@ -3,6 +3,7 @@ import TableRow from "./TableRow";
 import "./Leaderboard.css";
 import { Link } from "react-router-dom";
 import { LeaderboardType } from "../../type/LeaderboardType";
+import { formatSeconds } from "../../utilities/formatSeconds";
 
 type Props = {
 	leaderboard: LeaderboardType | undefined;
@@ -30,9 +31,9 @@ const Leaderboard: React.FC<Props> = ({ handleGameStart, leaderboard }) => {
 						</tr>
 						{leaderboard?.map((user, index) => (
 							<TableRow
-								rank={index}
+								rank={index + 1}
 								name={user.name}
-								time={user.time}
+								time={formatSeconds(user.time)}
 							/>
 						))}
 					</table>

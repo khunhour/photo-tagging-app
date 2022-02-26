@@ -3,7 +3,7 @@ import React from "react";
 interface Props {
 	rank: number;
 	name: string;
-	time: number;
+	time: string;
 }
 
 const TableRow: React.FC<Props> = ({ rank, name, time }) => {

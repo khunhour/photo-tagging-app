@@ -24,6 +24,7 @@ import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { LeaderboardType } from "./type/LeaderboardType";
 import { CharacterType } from "./type/CharacterType";
+import { sortArrayAscending } from "./utilities/sortArrayAscending";
 
 const App: React.FC = () => {
 	// state hooks
@@ -76,8 +77,8 @@ const App: React.FC = () => {
 				...doc.data(),
 			}));
 
-			console.log(formattedData);
-			setLeaderboard([...formattedData]);
+			const sortedArray = sortArrayAscending(formattedData);
+			setLeaderboard([...sortedArray]);
 		};
 		getLeaderboard();
 	}, [gameOver]);
