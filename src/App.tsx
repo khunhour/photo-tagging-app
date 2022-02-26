@@ -7,7 +7,7 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Footer from "./components/Footer/Footer";
 
 //fire base
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase-config";
 
 // helper functions import
@@ -44,6 +44,7 @@ const App: React.FC = () => {
 
 	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
+	const leaderboardRef = collection(db, "leaderboard");
 
 	//fetch actual answers to target location
 	useEffect(() => {
@@ -51,7 +52,9 @@ const App: React.FC = () => {
 			const data = await getDocs(locationCollectionRef);
 			const formattedData = data.docs.map((doc) => ({
 				...doc.data(),
+				id: doc.id,
 			}));
+			console.log(formattedData);
 			setTargetLocation([...formattedData]);
 		};
 		getLocation();
@@ -76,6 +79,13 @@ const App: React.FC = () => {
 		if (isGameOver) {
 			setGameOver(true);
 			setGameStart(false);
+			const createNewScore = async () => {
+				await addDoc(leaderboardRef, {
+					name: currentPlayer,
+					time: count,
+				});
+			};
+			createNewScore();
 		}
 	}, [remainingTarget]);
 
