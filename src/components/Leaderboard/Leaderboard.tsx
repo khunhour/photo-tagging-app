@@ -2,12 +2,14 @@ import React from "react";
 import TableRow from "./TableRow";
 import "./Leaderboard.css";
 import { Link } from "react-router-dom";
+import { LeaderboardType } from "../../type/LeaderboardType";
 
 type Props = {
+	leaderboard: LeaderboardType | undefined;
 	handleGameStart: (e: any) => void;
 };
 
-const Leaderboard: React.FC<Props> = ({ handleGameStart }) => {
+const Leaderboard: React.FC<Props> = ({ handleGameStart, leaderboard }) => {
 	return (
 		<div className="wrapper">
 			<div id="leaderboard">
@@ -26,27 +28,13 @@ const Leaderboard: React.FC<Props> = ({ handleGameStart }) => {
 							<th>Name</th>
 							<th>Time</th>
 						</tr>
-						{/* <TableRow /> */}
-						<tr>
-							<td>1</td>
-							<td>Mary Poppins</td>
-							<td>30s</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Mary Poppins</td>
-							<td>30s</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Mary Poppins</td>
-							<td>30s</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Mary Poppins</td>
-							<td>30s</td>
-						</tr>
+						{leaderboard?.map((user, index) => (
+							<TableRow
+								rank={index}
+								name={user.name}
+								time={user.time}
+							/>
+						))}
 					</table>
 				</div>
 				<a

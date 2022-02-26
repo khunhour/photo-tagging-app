@@ -68,7 +68,19 @@ const App: React.FC = () => {
 		getLocation();
 	}, []);
 
-	//fetch
+	//fetch recorder users scores to display in leaderboard
+	useEffect(() => {
+		const getLeaderboard = async () => {
+			const data = await getDocs(leaderboardRef);
+			const formattedData = data.docs.map((doc) => ({
+				...doc.data(),
+			}));
+
+			console.log(formattedData);
+			setLeaderboard([...formattedData]);
+		};
+		getLeaderboard();
+	}, [gameOver]);
 
 	//start timer/stop watch on game start
 	useEffect(() => {
@@ -176,7 +188,12 @@ const App: React.FC = () => {
 				/>
 				<Route
 					path="/leaderboard"
-					element={<Leaderboard handleGameStart={handleGameStart} />}
+					element={
+						<Leaderboard
+							leaderboard={leaderboard}
+							handleGameStart={handleGameStart}
+						/>
+					}
 				/>
 			</Routes>
 			<Footer />
