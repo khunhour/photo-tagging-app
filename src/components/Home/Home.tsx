@@ -1,11 +1,16 @@
 import React from "react";
 import "./Home.css";
 type Props = {
+	currentPlayer: string;
 	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleGameStart: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-const Home: React.FC<Props> = ({ handleNameChange, handleGameStart }) => {
+const Home: React.FC<Props> = ({
+	currentPlayer,
+	handleNameChange,
+	handleGameStart,
+}) => {
 	return (
 		<div className="wrapper">
 			<div id="home">
@@ -37,6 +42,7 @@ const Home: React.FC<Props> = ({ handleNameChange, handleGameStart }) => {
 						placeholder="Peter Parker"
 						required
 						onChange={handleNameChange}
+						value={currentPlayer}
 					/>
 					<button type="submit">Play</button>
 				</form>

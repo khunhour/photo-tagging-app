@@ -140,6 +140,7 @@ const App: React.FC = () => {
 							<Home
 								handleNameChange={handleNameChange}
 								handleGameStart={handleGameStart}
+								currentPlayer={currentPlayer}
 							/>
 						</>
 					}
