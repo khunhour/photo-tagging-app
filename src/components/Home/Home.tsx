@@ -1,5 +1,6 @@
+import TextField from "@material-ui/core/TextField";
 import React from "react";
-import "./Home.css";
+// import "./Home.css";
 type Props = {
 	currentPlayer: string;
 	handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -38,12 +39,21 @@ const Home: React.FC<Props> = ({
 				</div>
 				<form onSubmit={handleGameStart}>
 					<h2>Enter Your Name</h2>
-					<input
+					<TextField
+						label="Name"
+						variant="standard"
+						placeholder="Peter Parker"
+						value={currentPlayer}
+						onChange={handleNameChange}
+						required
+						size="small"
+					/>
+					{/* <input
 						placeholder="Peter Parker"
 						required
 						onChange={handleNameChange}
 						value={currentPlayer}
-					/>
+					/> */}
 					<button type="submit">Play</button>
 				</form>
 			</div>
