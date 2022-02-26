@@ -1,5 +1,7 @@
+import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
+import { Link } from "react-router-dom";
 // import "./Home.css";
 type Props = {
 	currentPlayer: string;
@@ -56,6 +58,9 @@ const Home: React.FC<Props> = ({
 					/> */}
 					<button type="submit">Play</button>
 				</form>
+				<Link to="/leaderboard">
+					<Button variant="contained">Leaderboard</Button>
+				</Link>
 			</div>
 		</div>
 	);
