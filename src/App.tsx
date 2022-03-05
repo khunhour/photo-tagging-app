@@ -61,7 +61,7 @@ const App: React.FC = () => {
 				firebase.addNewUser(currentPlayer);
 			})();
 		}
-	}, [gameStart, currentPlayer]);
+	}, [gameStart]);
 
 	//fetch actual answers to target location
 	useEffect(() => {
@@ -73,30 +73,13 @@ const App: React.FC = () => {
 
 	//fetch recorder users scores to display in leaderboard
 	useEffect(() => {
-		const getLeaderboard = async () => {
-			const data = await getDocs(playersRef);
-			const formattedData = data.docs.map((doc) => ({
-				...doc.data(),
-			}));
-			const sortedArray = sortArrayAscending(formattedData);
-			setLeaderboard([...sortedArray]);
-		};
-		getLeaderboard();
+		(async () => {
+			const data = await firebase.fetchAllPlayers();
+			setLeaderboard([...data]);
+		})();
 	}, [gameOver]);
 
 	//start timer/stop watch on game start on frontEnd
-	useEffect(() => {
-		if (gameStart) {
-			var timer = setInterval(
-				() => setCount((prevCount) => prevCount + 1),
-				1000
-			);
-			return () => {
-				clearInterval(timer);
-			};
-		}
-	}, [gameStart]);
-
 	useEffect(() => {
 		if (gameStart) {
 			var timer = setInterval(
