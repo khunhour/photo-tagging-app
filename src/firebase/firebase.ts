@@ -1,12 +1,10 @@
 import {
-	addDoc,
 	collection,
 	doc,
 	getDoc,
 	getDocs,
 	orderBy,
 	query,
-	serverTimestamp,
 	setDoc,
 	Timestamp,
 	updateDoc,
@@ -36,13 +34,21 @@ const addNewUser = async (currentPlayer: string) => {
 	});
 };
 
+const addStartTime = async () => {
+	const userRef = doc(db, "players", playerId);
+	const startTime = Timestamp.now();
+	await updateDoc(userRef, {
+		startTime,
+	});
+};
+
 const addEndTime = async () => {
 	const userRef = doc(db, "players", playerId);
 	const userSnap = await getDoc(userRef);
 	const data = userSnap.data();
 	if (!data) return;
 	const endTime = +Timestamp.now();
-	const score = endTime - data.startTime - 2;
+	const score = endTime - data.startTime;
 	await updateDoc(userRef, {
 		endTime,
 		score,
@@ -60,11 +66,21 @@ const fetchAllPlayers = async () => {
 	return data;
 };
 
+const fetchScore = async () => {
+	const userRef = doc(db, "players", playerId);
+	const userSnap = await getDoc(userRef);
+	const data = userSnap.data();
+	if (!data) return;
+	return data.score;
+};
+
 const firebase = {
 	getLocation,
 	addNewUser,
+	addStartTime,
 	addEndTime,
 	fetchAllPlayers,
+	fetchScore,
 };
 
 export default firebase;

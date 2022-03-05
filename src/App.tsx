@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
+//firebase
+import firebase from "./firebase/firebase";
+
 // components
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -8,15 +11,6 @@ import Main from "./components/Main/Main";
 import Result from "./components/Result/Result";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Footer from "./components/Footer/Footer";
-
-//fire base
-import {
-	addDoc,
-	collection,
-	getDocs,
-	serverTimestamp,
-} from "firebase/firestore";
-import { db } from "./firebase/firebase-config";
 
 // helper functions import
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
@@ -29,8 +23,6 @@ import { TargetLocationType } from "./type/targetLocationType";
 import { MouseCoordType } from "./type/mouseCoordType";
 import { LeaderboardType } from "./type/LeaderboardType";
 import { CharacterType } from "./type/CharacterType";
-import { sortArrayAscending } from "./utilities/sortArrayAscending";
-import firebase from "./firebase/firebase";
 
 const App: React.FC = () => {
 	// state hooks
@@ -40,6 +32,7 @@ const App: React.FC = () => {
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
 	const [leaderboard, setLeaderboard] = useState<LeaderboardType>();
+	const [score, setScore] = useState<number>(0);
 	const [remainingTarget, setRemainingTarget] =
 		useState<CharacterType>(TARGET_CHARACTER);
 	const [mouseCoord, setMouseCoord] = useState<MouseCoordType>({
@@ -50,15 +43,13 @@ const App: React.FC = () => {
 		[]
 	);
 	const navigate = useNavigate();
-	//firebase database ref
-	const locationCollectionRef = collection(db, "target-location");
-	const playersRef = collection(db, "players");
 
 	//set up player profile in the back end database
 	useEffect(() => {
 		if (gameStart) {
 			(async () => {
 				firebase.addNewUser(currentPlayer);
+				// firebase.addStartTime();
 			})();
 		}
 	}, [gameStart]);
@@ -96,10 +87,13 @@ const App: React.FC = () => {
 	useEffect(() => {
 		const isGameOver = checkGameOver(remainingTarget);
 		if (isGameOver) {
-			setGameOver(true);
-			setGameStart(false);
 			(async () => {
+				// update db with endTime
 				await firebase.addEndTime();
+				const time = await firebase.fetchScore();
+				setScore(time);
+				setGameOver(true);
+				setGameStart(false);
 			})();
 		}
 	}, [remainingTarget]);
@@ -180,7 +174,10 @@ const App: React.FC = () => {
 								handleCharSelection={handleCharSelection}
 							/>
 							{gameOver && (
-								<Result handleGameOver={handleGameOver} />
+								<Result
+									handleGameOver={handleGameOver}
+									score={score}
+								/>
 							)}
 						</>
 					}

@@ -47,7 +47,7 @@ const Leaderboard: React.FC<Props> = ({ handleGameStart, leaderboard }) => {
 							<TableRow
 								rank={index + 1}
 								name={user.name}
-								time={formatSeconds(user.time)}
+								time={formatSeconds(user.score)}
 							/>
 						))}
 					</table>
