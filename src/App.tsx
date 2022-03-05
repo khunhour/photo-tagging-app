@@ -31,7 +31,6 @@ import { LeaderboardType } from "./type/LeaderboardType";
 import { CharacterType } from "./type/CharacterType";
 import { sortArrayAscending } from "./utilities/sortArrayAscending";
 import firebase from "./firebase/firebase";
-import uniqid from "uniqid";
 
 const App: React.FC = () => {
 	// state hooks
@@ -51,7 +50,6 @@ const App: React.FC = () => {
 		[]
 	);
 	const navigate = useNavigate();
-
 	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
 	const playersRef = collection(db, "players");
@@ -60,7 +58,7 @@ const App: React.FC = () => {
 	useEffect(() => {
 		if (gameStart) {
 			(async () => {
-				firebase.addNewUser(currentPlayer, uniqid());
+				firebase.addNewUser(currentPlayer);
 			})();
 		}
 	}, [gameStart, currentPlayer]);
@@ -117,6 +115,9 @@ const App: React.FC = () => {
 		if (isGameOver) {
 			setGameOver(true);
 			setGameStart(false);
+			(async () => {
+				await firebase.addEndTime();
+			})();
 		}
 	}, [remainingTarget]);
 

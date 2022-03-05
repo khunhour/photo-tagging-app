@@ -1,10 +1,18 @@
 import {
 	addDoc,
 	collection,
+	doc,
+	getDoc,
 	getDocs,
 	serverTimestamp,
+	setDoc,
+	Timestamp,
+	updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase-config";
+import uniqid from "uniqid";
+
+let playerId: string = "";
 
 const getLocation = async () => {
 	const locationCollectionRef = collection(db, "target-location");
@@ -16,18 +24,33 @@ const getLocation = async () => {
 	return formattedData;
 };
 
-const addNewUser = async (currentPlayer: string, id: string) => {
-	const playersRef = collection(db, "players");
-	await addDoc(playersRef, {
+const addNewUser = async (currentPlayer: string) => {
+	playerId = uniqid();
+	const playersRef = doc(db, "players", playerId);
+	await setDoc(playersRef, {
 		name: currentPlayer,
-		id: id,
-		startTime: serverTimestamp(),
+		id: playerId,
+		startTime: Timestamp.now(),
+	});
+};
+
+const addEndTime = async () => {
+	const userRef = doc(db, "players", playerId);
+	const userSnap = await getDoc(userRef);
+	const data = userSnap.data();
+	if (!data) return;
+	const endTime = +Timestamp.now();
+	const score = endTime - data.startTime;
+	await updateDoc(userRef, {
+		endTime,
+		score,
 	});
 };
 
 const firebase = {
 	getLocation,
 	addNewUser,
+	addEndTime,
 };
 
 export default firebase;
