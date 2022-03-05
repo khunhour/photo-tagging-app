@@ -1,5 +1,3 @@
-import { Button } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import React from "react";
 import { Link } from "react-router-dom";
 // import "./Home.css";
@@ -41,25 +39,16 @@ const Home: React.FC<Props> = ({
 				</div>
 				<form onSubmit={handleGameStart}>
 					<h2>Enter Your Name</h2>
-					<TextField
-						label="Name"
-						variant="standard"
+					<input
 						placeholder="Peter Parker"
-						value={currentPlayer}
-						onChange={handleNameChange}
 						required
-						size="small"
+						onChange={handleNameChange}
+						value={currentPlayer}
 					/>
-					{/* <input
-						placeholder="Peter Parker"
-						required
-						onChange={handleNameChange}
-						value={currentPlayer}
-					/> */}
 					<button type="submit">Play</button>
 				</form>
 				<Link to="/leaderboard">
-					<Button variant="contained">Leaderboard</Button>
+					<button>Leaderboard</button>
 				</Link>
 			</div>
 		</div>

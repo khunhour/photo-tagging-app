@@ -52,7 +52,7 @@ const App: React.FC = () => {
 				// firebase.addStartTime();
 			})();
 		}
-	}, [gameStart]);
+	}, [gameStart, currentPlayer]);
 
 	//fetch actual answers to target location
 	useEffect(() => {

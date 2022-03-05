@@ -31,7 +31,18 @@ const Header: React.FC<Props> = ({
 			{(gameStart || gameOver) && (
 				<>
 					<h1 className="timer">{formatSeconds(count)}</h1>
-					<h1 className="target">{remainingTarget.length}</h1>
+					{/* <h1 className="target">{remainingTarget.length}</h1> */}
+					<div>
+						{remainingTarget.map((target, index) => {
+							return (
+								<img
+									height="40"
+									src={require("/src/images/" + target.img)}
+									alt={target.name}
+								/>
+							);
+						})}
+					</div>
 				</>
 			)}
 		</header>

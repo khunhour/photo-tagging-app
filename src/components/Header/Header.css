@@ -4,10 +4,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	color: white;
-}
-
-header * {
-	border: solid 1px red;
+	padding: 0 30px;
 }
 
 header h1 {
