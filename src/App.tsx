@@ -10,8 +10,13 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Footer from "./components/Footer/Footer";
 
 //fire base
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase-config";
+import {
+	addDoc,
+	collection,
+	getDocs,
+	serverTimestamp,
+} from "firebase/firestore";
+import { db } from "./firebase/firebase-config";
 
 // helper functions import
 import { TARGET_CHARACTER } from "./utilities/targetCharacterConstant";
@@ -25,6 +30,8 @@ import { MouseCoordType } from "./type/mouseCoordType";
 import { LeaderboardType } from "./type/LeaderboardType";
 import { CharacterType } from "./type/CharacterType";
 import { sortArrayAscending } from "./utilities/sortArrayAscending";
+import firebase from "./firebase/firebase";
+import { async } from "@firebase/util";
 
 const App: React.FC = () => {
 	// state hooks
@@ -47,32 +54,33 @@ const App: React.FC = () => {
 
 	//firebase database ref
 	const locationCollectionRef = collection(db, "target-location");
-	const leaderboardRef = collection(db, "leaderboard");
+	const playersRef = collection(db, "players");
 
-	// function to upload user data to database
-	const createNewScore = async () => {
-		await addDoc(leaderboardRef, {
-			name: currentPlayer,
-			time: count,
-		});
-	};
+	//set up player profile in the back end database
+	useEffect(() => {
+		const createNewScore = async () => {
+			await addDoc(playersRef, {
+				name: currentPlayer,
+				startTime: serverTimestamp(),
+			});
+		};
+		if (gameStart) {
+			createNewScore();
+		}
+	}, [gameStart, playersRef, currentPlayer]);
+
 	//fetch actual answers to target location
 	useEffect(() => {
-		const getLocation = async () => {
-			const data = await getDocs(locationCollectionRef);
-			const formattedData = data.docs.map((doc) => ({
-				...doc.data(),
-				id: doc.id,
-			}));
-			setTargetLocation([...formattedData]);
-		};
-		getLocation();
+		(async () => {
+			const data = await firebase.getLocation();
+			setTargetLocation([...data]);
+		})();
 	}, []);
 
 	//fetch recorder users scores to display in leaderboard
 	useEffect(() => {
 		const getLeaderboard = async () => {
-			const data = await getDocs(leaderboardRef);
+			const data = await getDocs(playersRef);
 			const formattedData = data.docs.map((doc) => ({
 				...doc.data(),
 			}));
@@ -83,7 +91,19 @@ const App: React.FC = () => {
 		getLeaderboard();
 	}, [gameOver]);
 
-	//start timer/stop watch on game start
+	//start timer/stop watch on game start on frontEnd
+	useEffect(() => {
+		if (gameStart) {
+			var timer = setInterval(
+				() => setCount((prevCount) => prevCount + 1),
+				1000
+			);
+			return () => {
+				clearInterval(timer);
+			};
+		}
+	}, [gameStart]);
+
 	useEffect(() => {
 		if (gameStart) {
 			var timer = setInterval(
@@ -102,7 +122,6 @@ const App: React.FC = () => {
 		if (isGameOver) {
 			setGameOver(true);
 			setGameStart(false);
-			createNewScore();
 		}
 	}, [remainingTarget]);
 
