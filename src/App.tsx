@@ -31,7 +31,7 @@ import { LeaderboardType } from "./type/LeaderboardType";
 import { CharacterType } from "./type/CharacterType";
 import { sortArrayAscending } from "./utilities/sortArrayAscending";
 import firebase from "./firebase/firebase";
-import { async } from "@firebase/util";
+import uniqid from "uniqid";
 
 const App: React.FC = () => {
 	// state hooks
@@ -58,16 +58,12 @@ const App: React.FC = () => {
 
 	//set up player profile in the back end database
 	useEffect(() => {
-		const createNewScore = async () => {
-			await addDoc(playersRef, {
-				name: currentPlayer,
-				startTime: serverTimestamp(),
-			});
-		};
 		if (gameStart) {
-			createNewScore();
+			(async () => {
+				firebase.addNewUser(currentPlayer, uniqid());
+			})();
 		}
-	}, [gameStart, playersRef, currentPlayer]);
+	}, [gameStart, currentPlayer]);
 
 	//fetch actual answers to target location
 	useEffect(() => {
@@ -84,7 +80,6 @@ const App: React.FC = () => {
 			const formattedData = data.docs.map((doc) => ({
 				...doc.data(),
 			}));
-
 			const sortedArray = sortArrayAscending(formattedData);
 			setLeaderboard([...sortedArray]);
 		};
