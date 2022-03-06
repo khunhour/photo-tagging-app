@@ -1,12 +1,10 @@
 import React from "react";
 import "./Footer.css";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer: React.FC = () => {
 	return (
-		<footer>
-			<p>khunhour &copy;</p>
+		<footer data-testid="footer">
+			<p>khunhour &copy; 2022</p>
 			<a href="https://github.com/khunhour/photo-tagging-app">
 				<img src={require("../../images/github.png")} alt="github" />
 			</a>
