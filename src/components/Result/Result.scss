@@ -1,0 +1,17 @@
+@import "../../sass/variable";
+@import "../../sass/wrapper";
+@import "../../sass/card";
+
+.result {
+	@include card();
+
+	width: 75%;
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	margin-left: -37.5%;
+	.button-container {
+		display: flex;
+		gap: 20px;
+	}
+}

@@ -1,7 +1,33 @@
 .result {
-	width: 75%;
-	position: fixed;
-	left: 50%;
-	top: 40%;
-	margin-left: -37.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 75vw;
+  border-radius: 4px;
+  background-color: #027185;
+  color: white;
+  width: 75%;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  margin-left: -37.5%;
+}
+
+.result .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
 }
