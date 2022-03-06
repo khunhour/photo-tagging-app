@@ -106,7 +106,7 @@ const App: React.FC = () => {
 		if (showAlert !== "hidden") {
 			var timeout = setTimeout(() => {
 				setShowAlert("hidden");
-			}, 2000);
+			}, 1500);
 		}
 		return () => {
 			clearTimeout(timeout);

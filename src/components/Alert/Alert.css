@@ -2,25 +2,27 @@
   width: 150px;
   padding: 15px 30px;
   position: fixed;
-  bottom: 5px;
   color: white;
   text-align: center;
   border-radius: 4px;
+  top: 50px;
   opacity: 0;
-  -webkit-transition: all ease-in 300ms;
-  transition: all ease-in 300ms;
+  -webkit-transition: all ease-in 200ms;
+  transition: all ease-in 200ms;
 }
 
 .success {
   background-color: #2a8f2a;
   opacity: 1;
-  -webkit-transition: all ease-in 300ms;
-  transition: all ease-in 300ms;
+  -webkit-transition: all ease-in 200ms;
+  transition: all ease-in 200ms;
+  top: 70px;
 }
 
 .error {
   background-color: #e02929;
   opacity: 1;
-  -webkit-transition: all ease-in 300ms;
-  transition: all ease-in 300ms;
+  -webkit-transition: all ease-in 200ms;
+  transition: all ease-in 200ms;
+  top: 70px;
 }

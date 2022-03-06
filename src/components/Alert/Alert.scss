@@ -5,21 +5,23 @@ $error: rgb(224, 41, 41);
 	width: 150px;
 	padding: 15px 30px;
 	position: fixed;
-	bottom: 5px;
 	color: white;
 	text-align: center;
 	border-radius: 4px;
+	top: 50px;
 	opacity: 0;
-	transition: all ease-in 300ms;
+	transition: all ease-in 200ms;
 }
 
 .success {
 	background-color: $success;
 	opacity: 1;
-	transition: all ease-in 300ms;
+	transition: all ease-in 200ms;
+	top: 70px;
 }
 .error {
 	background-color: $error;
 	opacity: 1;
-	transition: all ease-in 300ms;
+	transition: all ease-in 200ms;
+	top: 70px;
 }
