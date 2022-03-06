@@ -10,7 +10,7 @@ const Result: React.FC<Props> = ({ handleGameOver, score }) => {
 	return (
 		<div className="result">
 			<h2>Your Score</h2>
-			<h3>You finished in</h3>
+			<div>You finished in</div>
 			<h1>{formatSeconds(score)}</h1>
 			<div className="button-container">
 				<button onClick={() => handleGameOver("")}>Home</button>
