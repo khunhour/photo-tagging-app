@@ -1,6 +1,10 @@
 import React from "react";
 
-const Alert: React.FC<boolean> = (success) => {
+interface Props {
+	success: boolean;
+}
+
+const Alert: React.FC<Props> = ({ success }) => {
 	const color = success ? "success" : "error";
 	const message = success ? "Character Found." : "Keep Looking.";
 	return <div className={`color ${color}`}>{message}</div>;

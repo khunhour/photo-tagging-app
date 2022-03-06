@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import Alert from "./Alert";
 
-test("renders the correct alert", () => {
-	render(<Alert />);
-	const alert = screen.getByRole("heading", { name: "Alert" });
-	expect(alert).toBeInTheDocument();
+it("renders the sucess alert", () => {
+	render(<Alert success />);
+	const alert = screen.getByText(/Character Found./i);
+	expect(alert.textContent).toMatch("Character Found.");
+});
+
+it("renders the error alert", () => {
+	render(<Alert success={false} />);
+	const alert = screen.getByText(/Keep Looking/i);
+	expect(alert.textContent).toMatch("Keep Looking.");
 });
