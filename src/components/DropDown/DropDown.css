@@ -1,36 +1,46 @@
 .drop-down {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	padding: 7px;
-	border-radius: 4px;
-	background-color: white;
-	gap: 3px;
-	margin-top: 20px;
-	margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  padding: 7px;
+  border-radius: 4px;
+  background-color: white;
+  gap: 3px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .drop-down button {
-	display: flex;
-	align-items: center;
-	justify-content: start;
-	padding: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding: 3px;
 }
 
 .drop-down button .img-container {
-	width: 30px;
-	height: 30px;
-	margin: 0;
+  width: 30px;
+  height: 30px;
+  margin: 0;
 }
 
 .marker {
-	position: absolute;
-	padding: 26px;
-
-	border-radius: 50%;
-	border: solid 4px red;
-	margin-left: -30px;
-	margin-top: -30px;
-
-	box-sizing: border-box;
+  position: absolute;
+  padding: 26px;
+  border-radius: 50%;
+  border: solid 4px red;
+  margin-left: -30px;
+  margin-top: -30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }

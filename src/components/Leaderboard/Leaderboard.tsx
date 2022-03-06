@@ -18,7 +18,7 @@ const Leaderboard: React.FC<Props> = ({ handleGameStart, leaderboard }) => {
 				<Link to="/">
 					<button> Back Home</button>
 				</Link>
-				<button onClick={handleGameStart}>Play Again</button>
+				<button onClick={handleGameStart}>Play</button>
 			</div>
 			<div className="ranking">
 				<h2>Ranking</h2>
