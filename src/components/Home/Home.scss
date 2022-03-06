@@ -2,10 +2,6 @@
 @import "../../sass/wrapper";
 @import "../../sass/card";
 
-.wrapper {
-	@include wrapper();
-}
-
 .how-to-play,
 .objective,
 #home form {
@@ -13,6 +9,7 @@
 }
 
 #home {
+	@include wrapper();
 	input {
 		padding: 5px 10px;
 		margin-bottom: 5px;

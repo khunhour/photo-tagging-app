@@ -14,7 +14,7 @@ const Home: React.FC<Props> = ({
 	handleGameStart,
 }) => {
 	return (
-		<div id="home" className="wrapper">
+		<div id="home">
 			<h1>Seek&Find</h1>
 			<div className="objective">
 				<h2>Objective</h2>

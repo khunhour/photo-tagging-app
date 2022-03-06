@@ -2,17 +2,21 @@
 @import "../../sass/wrapper";
 @import "../../sass/card";
 
-.wrapper {
-	@include wrapper();
-}
-
 #leaderboard {
+	@include wrapper();
 	.ranking {
 		@include card();
+	}
+	.button-container {
+		display: flex;
+		gap: 60px;
+		padding: 10px;
 	}
 	table {
 		min-width: 65vw;
 		background-color: white;
+		margin-bottom: 20px;
+		overflow: scroll;
 	}
 
 	th {
