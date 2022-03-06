@@ -9,11 +9,17 @@ $error: rgb(224, 41, 41);
 	color: white;
 	text-align: center;
 	border-radius: 4px;
+	opacity: 0;
+	transition: all ease-in 300ms;
 }
 
 .success {
 	background-color: $success;
+	opacity: 1;
+	transition: all ease-in 300ms;
 }
 .error {
 	background-color: $error;
+	opacity: 1;
+	transition: all ease-in 300ms;
 }

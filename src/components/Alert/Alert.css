@@ -6,12 +6,21 @@
   color: white;
   text-align: center;
   border-radius: 4px;
+  opacity: 0;
+  -webkit-transition: all ease-in 300ms;
+  transition: all ease-in 300ms;
 }
 
 .success {
   background-color: #2a8f2a;
+  opacity: 1;
+  -webkit-transition: all ease-in 300ms;
+  transition: all ease-in 300ms;
 }
 
 .error {
   background-color: #e02929;
+  opacity: 1;
+  -webkit-transition: all ease-in 300ms;
+  transition: all ease-in 300ms;
 }

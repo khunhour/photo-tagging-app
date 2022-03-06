@@ -1,16 +1,16 @@
 import React from "react";
-import { checkGameOver } from "../../utilities/checkGameOver";
+
+//component
 import Alert from "../Alert/Alert";
 import DropDown from "../DropDown/DropDown";
-import Result from "../Result/Result";
 //css
 import "./Main.css";
 
 //types
 interface Props {
 	showMarker: boolean;
-	gameOver: boolean;
 	mouseCoord: { x: number; y: number };
+	showAlert: string;
 	remainingTarget: {
 		name: string;
 		img: string;
@@ -21,9 +21,9 @@ interface Props {
 
 const Main: React.FC<Props> = ({
 	showMarker,
-	gameOver,
 	mouseCoord,
 	remainingTarget,
+	showAlert,
 	handleClickedPic,
 	handleCharSelection,
 }) => {
@@ -40,7 +40,7 @@ const Main: React.FC<Props> = ({
 					handleCharSelection={handleCharSelection}
 				/>
 			)}
-			<Alert success={false} />
+			<Alert showAlert={showAlert} />
 		</div>
 	);
 };

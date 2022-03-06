@@ -30,6 +30,7 @@ const App: React.FC = () => {
 	const [showMarker, setShowMarker] = useState<boolean>(false);
 	const [gameStart, setGameStart] = useState<boolean>(false);
 	const [gameOver, setGameOver] = useState<boolean>(false);
+	const [showAlert, setShowAlert] = useState<string>("hidden");
 	const [currentPlayer, setCurrentPlayer] = useState<string>("");
 	const [leaderboard, setLeaderboard] = useState<LeaderboardType>();
 	const [score, setScore] = useState<number>(0);
@@ -98,6 +99,18 @@ const App: React.FC = () => {
 		}
 	}, [remainingTarget]);
 
+	// make sucess or error alert disapear after 2s
+	useEffect(() => {
+		if (showAlert !== "hidden") {
+			var timeout = setTimeout(() => {
+				setShowAlert("hidden");
+			}, 2000);
+		}
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [showAlert]);
+
 	//handle when click on pic to show targetcircle and dropdown for selection
 	const handleClickedPic = (e: any) => {
 		if (checkGameOver(remainingTarget)) return;
@@ -107,20 +120,14 @@ const App: React.FC = () => {
 	};
 
 	const handleCharSelection = (id: string) => {
-		//check if it match with provided char
-		// if true
-		let charMatched = checkCharMatch(id, mouseCoord, targetLocation);
-
+		const charMatched = checkCharMatch(id, mouseCoord, targetLocation);
 		if (charMatched) {
-			//adjust remaining char
-			//display result
 			setRemainingTarget(
 				remainingTarget.filter((obj) => obj.name.toLowerCase() !== id)
 			);
-			alert("Match");
+			setShowAlert("success");
 		} else {
-			//display result
-			alert("wrong");
+			setShowAlert("error");
 		}
 	};
 
@@ -167,8 +174,8 @@ const App: React.FC = () => {
 						<>
 							<Main
 								showMarker={showMarker}
-								gameOver={gameOver}
 								mouseCoord={mouseCoord}
+								showAlert={showAlert}
 								remainingTarget={remainingTarget}
 								handleClickedPic={handleClickedPic}
 								handleCharSelection={handleCharSelection}
