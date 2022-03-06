@@ -14,7 +14,7 @@ const Home: React.FC<Props> = ({
 	handleGameStart,
 }) => {
 	return (
-		<div id="home">
+		<div id="home" data-testid="home-component">
 			<h1>Seek&Find</h1>
 			<div className="objective">
 				<h2>Objective</h2>
