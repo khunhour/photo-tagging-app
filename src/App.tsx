@@ -97,6 +97,7 @@ const App: React.FC = () => {
 				setScore(time);
 				setGameOver(true);
 				setGameStart(false);
+				setCount(0);
 			})();
 		}
 	}, [remainingTarget]);
@@ -145,7 +146,6 @@ const App: React.FC = () => {
 	};
 
 	const handleGameOver = (destination: string) => {
-		setCount(0);
 		setGameStart(false);
 		setGameOver(false);
 		setRemainingTarget(TARGET_CHARACTER);
