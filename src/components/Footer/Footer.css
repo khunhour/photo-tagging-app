@@ -1,25 +1,27 @@
 footer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--blue);
-	color: white;
-	margin-top: auto;
-	/* position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #027185;
+  color: white;
+  margin-top: auto;
 }
 
 footer a img {
-	width: 20px;
-	height: 20px;
-	margin-left: 5px;
-	border-radius: 50%;
-	background-color: white;
-	border: solid 1px white;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background-color: white;
+  border: solid 1px white;
 }
 
 footer a img:hover {
-	background-color: var(--pale-blue);
+  background-color: #1f98ad48;
 }

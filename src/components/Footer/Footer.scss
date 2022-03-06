@@ -1,0 +1,25 @@
+@import "../../sass/variable";
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $blue;
+	color: white;
+	margin-top: auto;
+
+	a {
+		img {
+			width: 20px;
+			height: 20px;
+			margin-left: 5px;
+			border-radius: 50%;
+			background-color: white;
+			border: solid 1px white;
+
+			&:hover {
+				background-color: $pale-blue;
+			}
+		}
+	}
+}
