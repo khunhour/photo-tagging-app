@@ -1,5 +1,6 @@
 import React from "react";
 import { checkGameOver } from "../../utilities/checkGameOver";
+import Alert from "../Alert/Alert";
 import DropDown from "../DropDown/DropDown";
 import Result from "../Result/Result";
 //css
@@ -39,6 +40,7 @@ const Main: React.FC<Props> = ({
 					handleCharSelection={handleCharSelection}
 				/>
 			)}
+			<Alert success={false} />
 		</div>
 	);
 };
