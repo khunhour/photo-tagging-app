@@ -21,34 +21,8 @@ body {
           justify-content: space-between;
 }
 
-#home,
-#leaderboard {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: var(--dark-blue);
-  color: white;
-  padding-bottom: 30px;
-}
-
-button,
-input {
+button {
+  padding: 5px 15px;
   font-family: "Patua One", cursive;
+  color: #003d47;
 }
-
-/* .wrapper {
-	background-color: rgba(0, 0, 0, 0.705);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-} */

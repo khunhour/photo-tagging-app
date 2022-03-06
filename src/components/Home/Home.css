@@ -1,13 +1,47 @@
-#home ol {
-	margin: 0;
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #003d47;
+  color: white;
+  padding-bottom: 30px;
 }
 
-#home form button {
-	padding: 5px 30px;
-	margin-top: 10px;
+.how-to-play,
+.objective,
+#home form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 75vw;
+  border-radius: 4px;
+  background-color: #027185;
+  color: white;
 }
 
 #home input {
-	width: 250px;
-	padding: 4px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
 }
