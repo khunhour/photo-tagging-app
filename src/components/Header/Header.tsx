@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { formatSeconds } from "../../utilities/formatSeconds";
 //css
 import "./Header.css";
@@ -9,6 +10,7 @@ interface Props {
 	count: number;
 	gameStart: boolean;
 	gameOver: boolean;
+	handleGameOver: (destination: string) => void;
 }
 
 const Header: React.FC<Props> = ({
@@ -16,6 +18,7 @@ const Header: React.FC<Props> = ({
 	count,
 	gameStart,
 	gameOver,
+	handleGameOver,
 }) => {
 	return (
 		<header>
@@ -30,8 +33,8 @@ const Header: React.FC<Props> = ({
 			)}
 			{(gameStart || gameOver) && (
 				<>
+					<button onClick={() => handleGameOver("")}>Home</button>
 					<h1 className="timer">{formatSeconds(count)}</h1>
-					{/* <h1 className="target">{remainingTarget.length}</h1> */}
 					<div>
 						{remainingTarget.map((target, index) => {
 							return (

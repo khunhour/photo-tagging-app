@@ -5,8 +5,12 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	color: white;
-	padding: 0 30px;
-
+	padding: 0 20px;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	z-index: 99;
+	box-sizing: border-box;
 	h1 {
 		margin: 10px 0;
 	}

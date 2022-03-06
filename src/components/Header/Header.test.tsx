@@ -3,6 +3,8 @@ import React from "react";
 import "@testing-library/jest-dom";
 import Header from "./Header";
 
+const mockFn = jest.fn();
+
 describe("Header component", () => {
 	it("renders logo when gameStart and gameOver is false", () => {
 		render(
@@ -11,6 +13,7 @@ describe("Header component", () => {
 				gameStart={false}
 				count={0}
 				remainingTarget={[]}
+				handleGameOver={mockFn}
 			/>
 		);
 		const logo = screen.getByRole("heading", { name: "Seek&Find" });
@@ -24,6 +27,7 @@ describe("Header component", () => {
 				gameStart={true}
 				count={0}
 				remainingTarget={[]}
+				handleGameOver={mockFn}
 			/>
 		);
 		const timer = screen.getByRole("heading");
