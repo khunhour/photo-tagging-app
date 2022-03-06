@@ -1,0 +1,50 @@
+@import "../../sass/variable";
+@import "../../sass/wrapper";
+@import "../../sass/card";
+
+.wrapper {
+	@include wrapper();
+}
+
+#leaderboard {
+	.ranking {
+		@include card();
+	}
+	table {
+		min-width: 65vw;
+		background-color: white;
+	}
+
+	th {
+		background-color: $dark-blue;
+		padding: 10px;
+		color: white;
+	}
+
+	td {
+		padding: 7px;
+	}
+
+	tr {
+		&:nth-child(odd) {
+			background-color: $pale-blue;
+		}
+		&:nth-child(even) {
+			background-color: white;
+		}
+	}
+
+	a {
+		color: white;
+	}
+}
+
+table,
+tr,
+th,
+td {
+	border: solid 1.5px black;
+	border-collapse: collapse;
+	text-align: center;
+	color: $dark-blue;
+}

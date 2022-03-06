@@ -3,12 +3,9 @@
 @mixin wrapper {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	width: 75vw;
-	border-radius: 4px;
-	background-color: $blue;
+	justify-content: center;
+	background-color: $dark-blue;
 	color: white;
+	padding-bottom: 30px;
 }

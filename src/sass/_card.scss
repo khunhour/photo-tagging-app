@@ -1,0 +1,14 @@
+@import "./variable";
+
+@mixin card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	width: 75vw;
+	border-radius: 4px;
+	background-color: $blue;
+	color: white;
+}
