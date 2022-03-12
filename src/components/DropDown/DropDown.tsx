@@ -21,8 +21,8 @@ const DropDown: React.FC<Props> = ({
 	};
 	return (
 		<>
-			<div className="marker" style={position}></div>
-			<div className="drop-down" style={position}>
+			<div className="marker" style={position} data-testid="marker"></div>
+			<div className="drop-down" style={position} data-testid="drop-down">
 				{remainingTarget.map((target, index) => {
 					return (
 						<button
@@ -34,7 +34,7 @@ const DropDown: React.FC<Props> = ({
 						>
 							<div className="img-container">
 								<img
-									src={require("/src/images/" + target.img)}
+									src={require("../../images/" + target.img)}
 									alt="character"
 								/>
 							</div>
