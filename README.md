@@ -5,6 +5,8 @@
 -   The fastest gets to be on the leaderboard
 -   You can play the game [here](https://photo-tagging-app-60d03.web.app/)
 
+<img src="./public/assets/photo-tagging-app.gif" alt="gameplay"/>
+
 # Built With
 
 -   TypeScript
