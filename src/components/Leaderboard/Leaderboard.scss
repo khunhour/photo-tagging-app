@@ -16,7 +16,6 @@
 		min-width: 65vw;
 		background-color: white;
 		margin-bottom: 20px;
-		overflow: scroll;
 	}
 
 	th {
@@ -51,4 +50,10 @@ td {
 	border-collapse: collapse;
 	text-align: center;
 	color: $dark-blue;
+}
+
+@media (max-width: 800px) {
+	#leaderboard table {
+		width: 80vw;
+	}
 }
