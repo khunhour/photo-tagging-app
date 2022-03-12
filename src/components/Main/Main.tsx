@@ -28,7 +28,11 @@ const Main: React.FC<Props> = ({
 	handleCharSelection,
 }) => {
 	return (
-		<div className="img-container" onClick={handleClickedPic}>
+		<div
+			className="img-container"
+			onClick={handleClickedPic}
+			data-testid="main"
+		>
 			<img
 				src={require("../../images/cartoonnetwork.jpg")}
 				alt="wheres-waldo-pic"
