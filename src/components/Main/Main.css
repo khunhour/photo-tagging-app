@@ -12,11 +12,11 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  margin-top: 60px;
 }
 
 .img-container img {
   display: block;
   text-align: center;
   width: 100%;
-  margin-top: 60px;
 }
