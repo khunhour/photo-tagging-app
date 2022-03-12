@@ -22,6 +22,12 @@
   width: 90%;
 }
 
+.how-to-play p,
+.objective p,
+#home form p {
+  text-align: center;
+}
+
 #home {
   display: -webkit-box;
   display: -ms-flexbox;

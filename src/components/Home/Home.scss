@@ -6,6 +6,9 @@
 .objective,
 #home form {
 	@include card();
+	p {
+		text-align: center;
+	}
 }
 
 #home {

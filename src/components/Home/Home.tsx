@@ -18,7 +18,7 @@ const Home: React.FC<Props> = ({
 			<h1>Seek&Find</h1>
 			<div className="objective">
 				<h2>Objective</h2>
-				<div>Find all 3 cartoon characters as fast as possible!</div>
+				<p>Find all 3 cartoon characters as fast as possible!</p>
 			</div>
 			<div className="how-to-play">
 				<h2>How to Play</h2>
