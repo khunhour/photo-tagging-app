@@ -44,3 +44,13 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+@media (max-width: 500px) {
+  .marker {
+    padding: 20px;
+  }
+  .drop-down {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
