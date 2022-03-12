@@ -148,6 +148,7 @@ const App: React.FC = () => {
 	const handleGameOver = (destination: string) => {
 		setGameStart(false);
 		setGameOver(false);
+		setCount(0);
 		setRemainingTarget(TARGET_CHARACTER);
 		navigate(`/${destination}`, { replace: true });
 	};
